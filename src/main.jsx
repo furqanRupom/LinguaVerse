@@ -10,7 +10,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <HelmetProvider>
+        <div className="font-poppins max-w-screen-7xl mx-auto">
         <RouterProvider router={router} />
+        </div>
       </HelmetProvider>
     </QueryClientProvider>
   </React.StrictMode>
