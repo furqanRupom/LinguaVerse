@@ -15,6 +15,8 @@ const Login = () => {
             console.log(error.message)
         })
     }
+
+
   return (
     <div className="mt-32 mb-8 max-w-7xl mx-auto">
       <div className="grid grid-cols-2 justify-items-center items-center">
@@ -74,9 +76,7 @@ const Login = () => {
             <input className="px-12 py-3 text-lg font-semibold my-5 rounded-lg text-white bg-[#4fa94d] cursor-pointer hover:bg-[#448c43]" type="submit" value="Login Now" />
                 </div>
 
-                <div className="flex items-center  justify-center">
-                    <h3 className="text-[#4fa94d] text-xl text-center btn btn-circle"><FaGoogle /></h3>
-                </div>
+               
           </form>
         </div>
       </div>

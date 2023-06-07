@@ -5,6 +5,7 @@ import {AiFillEyeInvisible} from 'react-icons/ai'
 import {AiFillEye} from 'react-icons/ai'
 import { useForm } from 'react-hook-form';
 import { useAuth } from "../../../hooks/useAuth";
+import SocialLogin from "../../../components/SocialLogin";
 const Register = () => {
     const [show,setShow] = useState(false);
     const [showPass,setShowPass] = useState(false);
@@ -134,7 +135,9 @@ const Register = () => {
                 <div className="flex items-center justify-center">
             <input  className="px-12 py-3 text-lg font-semibold my-5 rounded-lg text-white bg-[#4fa94d] cursor-pointer hover:bg-[#448c43]" type="submit" value="Register Now" />
                 </div>
+
           </form>
+            <SocialLogin />
         </div>
       </div>
     </div>
