@@ -4,13 +4,13 @@
     position: static  !important;
   }
 .swiper-button-prev{
-    color: #4fa94d!important;
+    color: #0eb582!important;
 }
 .swiper-button-next{
-    color: #4fa94d!important;
+    color: #0eb582!important;
 }
 .swiper-pagination-bullet-active{
-    background-color: #4fa94d !important;
+    background-color: #0eb582 !important;
 }
   .swiper-slide {
     text-align: center;

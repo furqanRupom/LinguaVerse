@@ -6,8 +6,8 @@ import { useAuth } from "../hooks/useAuth";
 const SocialLogin = () => {
   const { googleSignIn } = useAuth();
   const location = useLocation();
-//   const from = location?.state?.from?.pathname || "/";
-//   const navigate = useNavigate();
+  //   const from = location?.state?.from?.pathname || "/";
+  //   const navigate = useNavigate();
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
@@ -22,9 +22,14 @@ const SocialLogin = () => {
       });
   };
   return (
-    <div onClick={handleGoogleSignIn} className="flex items-center  justify-center">
-    <h3 className="text-[#4fa94d] text-xl text-center btn btn-circle"><FaGoogle /></h3>
-</div>
+    <div
+      onClick={handleGoogleSignIn}
+      className="flex items-center  justify-center"
+    >
+      <h3 className="text-[#0eb582] text-xl text-center btn btn-circle">
+        <FaGoogle />
+      </h3>
+    </div>
   );
 };
 

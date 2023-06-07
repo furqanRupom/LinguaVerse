@@ -1,21 +1,25 @@
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import { useAuth } from "../../../hooks/useAuth";
+import SocialLogin from "../../../components/SocialLogin";
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const {loginUser} = useAuth()
-    const onSubmit = data =>{
-        loginUser(data.name,data.email)
-        .then(result=>{
-            console.log(result.user)
-        })
-        .catch(error=>{
-            console.log(error.message)
-        })
-    }
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { loginUser } = useAuth();
+  const onSubmit = (data) => {
+    loginUser(data.name, data.email)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <div className="mt-32 mb-8 max-w-7xl mx-auto">
@@ -28,55 +32,60 @@ const Login = () => {
         </div>
 
         <div className="w-3/4">
-            <div className="text-center pb-5">
-          <h3 className="text-2xl font-bold">Login</h3>
-          <p className="py-3">Enter your information to Login</p>
-
-            </div>
+          <div className="text-center pb-5">
+            <h3 className="text-2xl font-bold">Login</h3>
+            <p className="py-3">Enter your information to Login</p>
+          </div>
 
           <form onSubmit={handleSubmit(onSubmit)}>
-
-
             <div className="form-control w-full max-w-full">
               <label className="label">
                 <span className="label-text">Your Email?</span>
-
               </label>
               <input
                 type="email"
                 placeholder="Your Email"
-                {...register('email', { required: true })}
+                {...register("email", { required: true })}
                 className="input input-bordered w-full "
               />
 
-{errors.email && <span className="text-red-500">Email is required</span>}
+              {errors.email && (
+                <span className="text-red-500">Email is required</span>
+              )}
             </div>
-
-
-
 
             <div>
-            <div className="form-control w-full pb-3">
-              <label className="label">
-                <span className="label-text">Your Password?</span>
+              <div className="form-control w-full pb-3">
+                <label className="label">
+                  <span className="label-text">Your Password?</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="password"
+                  {...register("password", { required: true })}
+                  className="input input-bordered w-full "
+                />
+                {errors.password && (
+                  <span className="text-red-500">Password is required</span>
+                )}
+              </div>
 
-              </label>
+              <span className="py-5">
+                New to LinguaVerse please{" "}
+                <Link className="underline text-teal-500" to="/register">
+                  Register
+                </Link>
+              </span>
+            </div>
+            <div className="flex items-center justify-center">
               <input
-                type="password"
-                placeholder="password"
-                {...register('password', { required: true })}
-                className="input input-bordered w-full "
+                className="px-12 py-3 text-lg font-semibold my-5 rounded-lg text-white bg-[#0eb582] cursor-pointer hover:bg-[#448c43]"
+                type="submit"
+                value="Login Now"
               />
-                {errors.password && <span className="text-red-500">Password is required</span>}
             </div>
 
-            <span className="py-5">New to LinguaVerse  please <Link className="underline text-teal-500" to="/register">Register</Link></span>
-            </div>
-                <div className="flex items-center justify-center">
-            <input className="px-12 py-3 text-lg font-semibold my-5 rounded-lg text-white bg-[#4fa94d] cursor-pointer hover:bg-[#448c43]" type="submit" value="Login Now" />
-                </div>
-
-               
+            <SocialLogin />
           </form>
         </div>
       </div>
