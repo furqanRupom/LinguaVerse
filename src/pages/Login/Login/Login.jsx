@@ -1,7 +1,12 @@
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data =>{
+        console.log(data)
+    }
   return (
     <div className="mt-32 mb-8 max-w-7xl mx-auto">
       <div className="grid grid-cols-2 justify-items-center items-center">
@@ -18,7 +23,8 @@ const Login = () => {
           <p className="py-3">Enter your information to Login</p>
 
             </div>
-          <form>
+
+          <form onSubmit={handleSubmit(onSubmit)}>
 
 
             <div className="form-control w-full max-w-full">
@@ -29,10 +35,11 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="Your Email"
+                {...register('email', { required: true })}
                 className="input input-bordered w-full "
               />
 
-
+{errors.email && <span className="text-red-500">Email is required</span>}
             </div>
 
 
@@ -47,9 +54,10 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="password"
+                {...register('password', { required: true })}
                 className="input input-bordered w-full "
               />
-
+                {errors.password && <span className="text-red-500">Password is required</span>}
             </div>
 
             <span className="py-5">New to LinguaVerse  please <Link className="underline text-teal-500" to="/register">Register</Link></span>
