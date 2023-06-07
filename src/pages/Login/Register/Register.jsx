@@ -4,13 +4,25 @@ import {} from 'react-icons/ai'
 import {AiFillEyeInvisible} from 'react-icons/ai'
 import {AiFillEye} from 'react-icons/ai'
 import { useForm } from 'react-hook-form';
+import { useAuth } from "../../../hooks/useAuth";
 const Register = () => {
     const [show,setShow] = useState(false);
     const [showPass,setShowPass] = useState(false);
-    const [disabled, setDisabled] = useState(true)
+    const [disabled, setDisabled] = useState(true);
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const {createUser,updateUserProfile} = useAuth()
     const onSubmit = data =>{
         console.log(data)
+        createUser(data.email,data.password)
+        .then(result =>{
+            console.log(result.user)
+            updateUserProfile(data.name,data.image).then(result=>{
+                    console.log(result.user)
+            }).catch(error=> console.log(error.message))
+        })
+        .catch(error=>{
+            console.log(error.message)
+        })
     }
 
   return (

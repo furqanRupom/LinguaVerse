@@ -1,11 +1,19 @@
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useForm } from 'react-hook-form';
+import { useAuth } from "../../../hooks/useAuth";
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const {loginUser} = useAuth()
     const onSubmit = data =>{
-        console.log(data)
+        loginUser(data.name,data.email)
+        .then(result=>{
+            console.log(result.user)
+        })
+        .catch(error=>{
+            console.log(error.message)
+        })
     }
   return (
     <div className="mt-32 mb-8 max-w-7xl mx-auto">
