@@ -145,7 +145,7 @@ const Header = () => {
             <div className="dropdown dropdown-end ">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src="https://img.freepik.com/free-photo/photo-as-passport-young-man-with-stylish-haircut_295783-869.jpg?w=360" />
+                 <img src={user?.photoURL} alt="" />
                 </div>
               </label>
               <ul

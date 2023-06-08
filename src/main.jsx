@@ -9,16 +9,14 @@ import AuthProviders from "./Providers/AuthProviders";
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProviders>
-
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
+    <React.StrictMode>
       <HelmetProvider>
-        <div className="font-poppins max-w-screen-7xl mx-auto">
-        <RouterProvider router={router} />
-        </div>
+        <QueryClientProvider client={queryClient}>
+          <div className="font-poppins max-w-screen-7xl mx-auto">
+            <RouterProvider router={router} />
+          </div>
+        </QueryClientProvider>
       </HelmetProvider>
-    </QueryClientProvider>
-  </React.StrictMode>
-
+    </React.StrictMode>
   </AuthProviders>
 );

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import axios from "axios";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../../components/SectionTitle";
 
 const AddClass = () => {
 
@@ -63,12 +64,7 @@ const AddClass = () => {
   return (
     <div className="max-w-6xl mx-auto">
 
-        <h3 className="text-center text-2xl font-bold">Add New Classes?</h3>
-        <img
-            className="mx-auto"
-            src="https://demo.themexbd.com/wpv/talim/wp-content/uploads/2021/04/bar-img-1.jpg"
-            alt=""
-          />
+       <SectionTitle title="Add New Classes?" />
       <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col space-y-1">
