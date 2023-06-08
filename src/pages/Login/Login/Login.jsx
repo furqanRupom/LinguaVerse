@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../hooks/useAuth";
 import SocialLogin from "../../../components/SocialLogin";
+import { AiFillEyeInvisible } from "react-icons/ai";
+import { AiFillEye } from "react-icons/ai";
+import { useState } from "react";
+
 
 const Login = () => {
+  const [show, setShow] = useState(false);
   const {
     register,
     handleSubmit,
@@ -55,12 +60,12 @@ const Login = () => {
             </div>
 
             <div>
-              <div className="form-control w-full pb-3">
+              <div className="form-control w-full pb-3 relative">
                 <label className="label">
                   <span className="label-text">Your Password?</span>
                 </label>
                 <input
-                  type="password"
+                  type={show ? "text" : "password"}
                   placeholder="password"
                   {...register("password", { required: true })}
                   className="input input-bordered w-full "
@@ -68,6 +73,12 @@ const Login = () => {
                 {errors.password && (
                   <span className="text-red-500">Password is required</span>
                 )}
+                 <div
+                  onClick={() => setShow(!show)}
+                  className="absolute right-3 top-12 text-xl text-[#0eb582] cursor-pointer"
+                >
+                  {show ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </div>
               </div>
 
               <span className="py-5">

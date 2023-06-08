@@ -34,7 +34,7 @@ const HeroCarousel = () => {
                 className="h-full bg-[100%] bg-cover flex items-center justify-start relative"
                 style={{ backgroundImage: `url(${image})` }}
               >
-                <div className="absolute  inset-0 bg-gradient-to-tr from-slate-950 via-slate-900/75"></div>
+                <div className="absolute  inset-0 bg-gradient-to-tr from-slate-950 via-slate-900/75 "></div>
                 <div className=" md:w-3/4 text-left pl-12 z-20">
                   <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-6xl text-white font-bold">
                     Linguistic Superpowers Unleashed

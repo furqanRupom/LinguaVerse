@@ -43,8 +43,8 @@ const BenefitsCarousel = () => {
   let slider;
 
   return (
-    <div className=" left-0 right-0 -mt-24 z-30 absolute  w-full max-w-[90rem] mx-auto flex items-center justify-center overflow-hidden">
-      <div className="bg-white shadow-lg rounded-lg px-5 pb-6">
+    <div className=" left-0 right-0 -mt-48    w-full max-w-[90rem] mx-auto flex items-center justify-center overflow-hidden">
+      <div className="bg-white z-20 shadow-lg rounded-lg px-5 py-12">
         <div className="text-center p-12">
           <h3 className=" text-xl md:text-4xl font-bold">
             Our School Facility
@@ -58,7 +58,7 @@ const BenefitsCarousel = () => {
             Revel in the Bountiful Benefits of Our Education Program
           </p>
         </div>
-        <div className="max-w-7xl mx-auto text-2xl text-center">
+        <div className="max-w-7xl mx-auto text-2xl text-center py-12">
           <Slider {...settings} ref={(c) => (slider = c)}>
             <div className="px-4">
               <div className="shadow-lg bg-white rounded-lg h-48 p-4">

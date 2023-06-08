@@ -12,7 +12,7 @@ const  Home = () => {
             </Helmet>
             <HeroCarousel />
             <BenefitsCarousel />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit sapiente beatae voluptatibus. Blanditiis similique, consequatur quam labore quo doloribus voluptates quaerat illo soluta, iste dolorem, architecto vero veniam vitae est?
+            
         </div>
     );
 };

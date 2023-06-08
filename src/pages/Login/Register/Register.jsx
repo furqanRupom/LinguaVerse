@@ -9,7 +9,7 @@ import SocialLogin from "../../../components/SocialLogin";
 const Register = () => {
   const [show, setShow] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  const [disabled, setDisabled] = useState(true);
+  // const [disabled, setDisabled] = useState(true);
   const {
     register,
     handleSubmit,
@@ -112,7 +112,7 @@ const Register = () => {
                 )}
                 <div
                   onClick={() => setShow(!show)}
-                  className="absolute right-3 top-12 text-xl text-[#448c43] cursor-pointer"
+                  className="absolute right-3 top-12 text-xl text-[#0eb582] cursor-pointer"
                 >
                   {show ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </div>
@@ -135,7 +135,7 @@ const Register = () => {
 
                 <div
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute right-3 top-12 text-xl text-[#448c43] cursor-pointer"
+                  className="absolute right-3 top-12 text-xl text-[#0eb582] cursor-pointer"
                 >
                   {showPass ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </div>
@@ -149,7 +149,7 @@ const Register = () => {
             </div>
             <div className="flex items-center justify-center">
               <input
-                className="px-12 py-3 text-lg font-semibold my-5 rounded-lg text-white bg-[#0eb582] cursor-pointer hover:bg-[#448c43]"
+                className="px-12 py-3 text-lg font-semibold my-5 rounded-lg text-white bg-[#0eb582] cursor-pointer hover:bg-teal-500"
                 type="submit"
                 value="Register Now"
               />
