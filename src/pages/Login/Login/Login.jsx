@@ -6,6 +6,8 @@ import SocialLogin from "../../../components/SocialLogin";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
 import { useState } from "react";
+import Swal from 'sweetalert2'
+import '../login.css'
 
 
 const Login = () => {
@@ -17,9 +19,22 @@ const Login = () => {
   } = useForm();
   const { loginUser } = useAuth();
   const onSubmit = (data) => {
-    loginUser(data.name, data.email)
+    console.log(data.email)
+    loginUser(data.email,data.password)
       .then((result) => {
-        console.log(result.user);
+        const loggedUser = result.user
+      
+        Swal.fire({
+          title: 'User Login successfully',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+
+
       })
       .catch((error) => {
         console.log(error.message);

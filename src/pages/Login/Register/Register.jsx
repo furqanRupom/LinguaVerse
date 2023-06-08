@@ -6,6 +6,8 @@ import { AiFillEye } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../hooks/useAuth";
 import SocialLogin from "../../../components/SocialLogin";
+import axios from "axios";
+import Swal from "sweetalert2";
 const Register = () => {
   const [show, setShow] = useState(false);
   const [showPass, setShowPass] = useState(false);
@@ -20,10 +22,33 @@ const Register = () => {
     console.log(data);
     createUser(data.email, data.password)
       .then((result) => {
-        console.log(result.user);
+        const loggedUser = result.user
         updateUserProfile(data.name, data.image)
           .then((result) => {
-            console.log(result.user);
+            const instructorData = {
+              name:loggedUser.displayName,
+              email:loggedUser.email,
+              image:loggedUser.photoURL,
+              role:'instructor'
+            }
+            console.log('updated',instructorData);
+
+            Swal.fire({
+              title: 'User Created successfully',
+              showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+              },
+              hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+              }
+            })
+            
+            // TODO : for now we just save the role of the database is intructor after we do our major part than we will reset
+
+            axios.post('http://localhost:5000/users',instructorData)
+            .then(res=>{
+              console.log(res.data)
+            })
           })
           .catch((error) => console.log(error.message));
       })

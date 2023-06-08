@@ -8,7 +8,7 @@ const Header = () => {
 
   // TODO : We will next to add is user is admin or instructor or not
   const isAdmin = false;
-  const isInstructor = false;
+  const isInstructor = true;
   const { logOut, user } = useAuth();
 
   const handleLogOut = () => {

@@ -69,17 +69,17 @@ const Footer = () => {
             </div>
           </div>
           <hr className="my-6 border-gray-400" />
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-[55%] px-4 mx-auto text-center ">
+          <div className="flex flex-col lg:flex-row items-center md:justify-between justify-center ">
+            <div className="w-full  xl:w-[55%] px-4 mx-auto text-center ">
 
-              <div className="flex items-center">
+              <div className="flex flex-col md:flex-row items-center">
 
             <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
       <img className="w-12" src={logo} alt="" />
       <span className="ml-3 text-xl">LinguaVerse</span>
     </a>
-    <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 LinguaVerse —
-      <a href="https://twitter.com/knyttneve" className="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">designed and developed by Furqan Ahmad Rupom</a>
+    <p className=" text-xs sm:text-sm  text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 LinguaVerse —
+      <a href="https://twitter.com/knyttneve" className="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">designed and developed by Fab Rupom</a>
     </p>
               </div>
             </div>

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import axios from "axios";
 
 const SocialLogin = () => {
   const { googleSignIn } = useAuth();
@@ -15,7 +16,12 @@ const SocialLogin = () => {
         const savedUser = {
           name: loggedUser.displayName,
           email: loggedUser.email,
+          image:loggedUser.photoURL
         };
+        axios.post('http://localhost:5000/users',savedUser)
+            .then(res=>{
+              console.log(res.data)
+            })
       })
       .then((data) => {
         console.log(data);
