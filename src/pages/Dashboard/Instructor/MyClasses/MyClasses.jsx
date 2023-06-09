@@ -1,15 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Loader from "../../../../Loader/Loader";
 import { useAuth } from "../../../../hooks/useAuth";
 import { useClass } from "../../../../hooks/useClass";
 import SectionTitle from "../../../../components/SectionTitle";
 import { motion } from "framer-motion";
+import Modal from "../../../../components/Modal";
 
 const MyClasses = () => {
   const [classes, refetch] = useClass();
+  const [classId,setClassId] = useState()
+  const showModalWithItemId =(Id) => {
+     window.my_modal_5.showModal()
+      setClassId(Id)
+  }
+
   return (
     <div>
         <SectionTitle title="My Classes" />
+        <Modal  classId={classId}/>
       <div className="col-span-12 mt-5">
         <div className="grid gap-2 grid-cols-1 lg:grid-cols-1">
           <div className="bg-white p-4 shadow-lg rounded-lg">
@@ -91,7 +99,7 @@ const MyClasses = () => {
 
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <div className="flex space-x-4">
-                                  <motion.button
+                                  <motion.button  onClick={() => showModalWithItemId(everyClass._id)}
                                      whileHover={{ scale: 1.1 }}
                                      whileTap={{ scale: 0.9 }}
 
@@ -135,8 +143,10 @@ const MyClasses = () => {
                                     </svg>
                                     <p>Delete</p>
                                   </motion.button>
+
                                 </div>
                               </td>
+
                             </tr>
                           ))}
                         </tbody>
@@ -149,6 +159,8 @@ const MyClasses = () => {
           </div>
         </div>
       </div>
+
+
     </div>
   );
 };

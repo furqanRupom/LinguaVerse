@@ -1,4 +1,8 @@
 r a.active {
     background-color: #0eb582;
-    
+
+  }
+
+  .modal-action{
+    justify-content: center !important;
   }
