@@ -25,13 +25,13 @@ const Register = () => {
         const loggedUser = result.user
         updateUserProfile(data.name, data.image)
           .then((result) => {
-            const instructorData = {
+            const usersData = {
               name:loggedUser.displayName,
               email:loggedUser.email,
               image:loggedUser.photoURL,
-              role:'instructor'
+              role:'student'
             }
-            console.log('updated',instructorData);
+            console.log('updated',usersData);
 
             Swal.fire({
               title: 'User Created successfully',
@@ -42,10 +42,10 @@ const Register = () => {
                 popup: 'animate__animated animate__fadeOutUp'
               }
             })
-            
-            // TODO : for now we just save the role of the database is intructor after we do our major part than we will reset
 
-            axios.post('http://localhost:5000/users',instructorData)
+            // TODO : for now we just save the role of the database is intructor after we do our major part than we will reset
+            // TODO : we will add sweet alert as well as navigate to home page
+            axios.post('http://localhost:5000/users',usersData)
             .then(res=>{
               console.log(res.data)
             })

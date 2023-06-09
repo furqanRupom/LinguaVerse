@@ -121,7 +121,7 @@ const Sidebar = () => {
                   whileTap={{ scale: 0.9 }}
                   className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-800   hover:text-white cursor-pointer transition-colors duration-300 transform border-b-2 border-[#0eb582]"
                 >
-                  <Link className="w-full">
+                  <Link to="/dashboard/manageUsers" className="w-full">
                     <FaUsers className="text-xl mx-2" /> Manage Users{" "}
                   </Link>
                 </motion.li>
