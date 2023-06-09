@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAllClasses } from "../../../../hooks/useAllClasses";
 import axios from "axios";
 import SectionTitle from "../../../../components/SectionTitle";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
@@ -11,7 +12,43 @@ const ManageUsers = () => {
   });
 
 
-  
+  const handleMakeAdmin = (user)=>{
+    axios.patch(`http://localhost:5000/users/admin/${user?._id}`)
+    .then(res=>{
+      if(res.data.modifiedCount > 0){
+        refetch();
+        Swal.fire({
+          title: `${user?.name} is now admin`,
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+      }
+    })
+  }
+
+  const handleMakeInstructor = (user)=>{
+    axios.patch(`http://localhost:5000/users/instructor/${user?._id}`)
+    .then(res=>{
+      if(res.data.modifiedCount > 0){
+        refetch();
+        Swal.fire({
+          title: `${user?.name} is now Instructor`,
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+      }
+    })
+  }
+
+
   return (
     <div>
       <SectionTitle title="Manage Users" />
@@ -58,7 +95,7 @@ const ManageUsers = () => {
                           {users.map((user, index) => (
                             <tr key={index}>
                                 <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                <img className="w-24 rounded-full object-cover" src={user.image} alt="" />
+                                <img className="w-20 rounded-full object-cover" src={user.image} alt="" />
                               </td>
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <p>{user.name}</p>
@@ -88,7 +125,7 @@ const ManageUsers = () => {
 
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <div className="flex space-x-4">
-                                  <button onClick={()=> handleMakeAdmin(user._id)}
+                                  <button onClick={()=> handleMakeAdmin(user)}
                                     disabled={
                                       user?.role === "student" || user?.role === 'instructor' ? false : true
                                     }
@@ -101,12 +138,12 @@ const ManageUsers = () => {
                                     Make Admin
                                   </button>
 
-                                  <button
+                                  <button onClick={()=> handleMakeInstructor(user)}
                                     disabled={
-                                        user?.role === "student" || user?.role === 'admin' ? false : true
+                                        user?.role === "student" ? false : true
                                     }
                                     className={`${
-                                        user?.role  === "student" || user?.role === 'admin'
+                                        user?.role  === "student"
                                         ? "bg-red-500 hover:bg-red-600"
                                         : "bg-gray-400 cursor-not-allowed"
                                     } text-white px-4 py-2 rounded mr-2`}
