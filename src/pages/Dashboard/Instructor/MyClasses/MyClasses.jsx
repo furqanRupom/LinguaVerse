@@ -5,7 +5,9 @@ import { useClass } from "../../../../hooks/useClass";
 import SectionTitle from "../../../../components/SectionTitle";
 import { motion } from "framer-motion";
 import Modal from "../../../../components/Modal";
-
+import axios from "axios";
+import Swal from "sweetalert2";
+import './MyClasses.css'
 const MyClasses = () => {
   const [classes, refetch] = useClass();
   const [classId,setClassId] = useState()
@@ -14,6 +16,38 @@ const MyClasses = () => {
       setClassId(Id)
   }
 
+  const handleDeleteClass = (id)=>{
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#0eb582',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        axios.delete(`http://localhost:5000/classes/${id}`)
+        .then(res=>{
+          if(res.data.deletedCount > 0){
+            refetch()
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        })
+
+      }
+    })
+
+
+
+
+
+  }
   return (
     <div>
         <SectionTitle title="My Classes" />
@@ -121,7 +155,7 @@ const MyClasses = () => {
                                     </svg>
                                     <p className="text-center">update</p>
                                   </motion.button>
-                                  <motion.button
+                                  <motion.button onClick={()=> handleDeleteClass(everyClass._id)}
                                      whileHover={{ scale: 1.1 }}
                                      whileTap={{ scale: 0.9 }}
 

@@ -1,0 +1,14 @@
+div:where(.swal2-container) div:where(.swal2-icon).swal2-warning{
+    color: #0eb582 !important;
+    border-color: #0eb582 !important;
+}
+.swal2-icon .swal2-warning .swal2-icon-show{
+    color: #0eb582 !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-icon).swal2-success [class^=swal2-success-line]{
+    background-color: #0eb582 !important;
+}
+div:where(.swal2-container) div:where(.swal2-icon).swal2-success .swal2-success-ring{
+    border: 0.25em solid rgba(134, 214, 220, 0.3)!important;
+}
