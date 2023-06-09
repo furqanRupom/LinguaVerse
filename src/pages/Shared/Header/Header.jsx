@@ -7,8 +7,8 @@ const Header = () => {
   const [navbar] = useNavbar();
 
   // TODO : We will next to add is user is admin or instructor or not
-  const isAdmin = false;
-  const isInstructor = true;
+  const isAdmin = true;
+  const isInstructor = false;
   const { logOut, user } = useAuth();
 
   const handleLogOut = () => {

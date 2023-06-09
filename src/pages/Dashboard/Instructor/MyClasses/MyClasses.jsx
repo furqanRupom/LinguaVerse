@@ -128,7 +128,7 @@ const MyClasses = () => {
                                 <p>0</p>
                               </td>
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                <p></p>
+                                <p>{everyClass?.feedback}</p>
                               </td>
 
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">

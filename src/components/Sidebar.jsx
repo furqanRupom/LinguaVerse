@@ -25,8 +25,8 @@ const Sidebar = () => {
   const [toggle, setToggle] = useState(false);
 
   // todo we will set it next admin or instructor
-  const isAdmin = false;
-  const isInstructor = true;
+  const isAdmin = true;
+  const isInstructor = false;
   const { user } = useAuth();
   const role = "host";
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -111,23 +111,15 @@ const Sidebar = () => {
                   whileTap={{ scale: 0.9 }}
                   className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-800   hover:text-white cursor-pointer transition-colors duration-300 transform border-b-2 border-[#0eb582]"
                 >
-                  <Link className="w-full">
+                  <Link to="/dashboard/manageClasses" className="w-full">
                     <FaRegBookmark className="text-xl mx-2" /> Manage Classes
                   </Link>
                 </motion.li>
+
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-800   hover:text-white cursor-pointer transition-colors duration-300 transform border-b-2 border-[#0eb582]"
-                >
-                  <Link className="w-full">
-                    <FaRegBookmark className="text-xl mx-2" /> Manage Classes
-                  </Link>
-                </motion.li>
-                <motion.li
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="flex w-full items-center px-3 py-1 mt-5 text-white hover:bg-gray-800   hover:text-white cursor-pointer transition-colors duration-300 transform border-b-2 border-[#0eb582]"
                 >
                   <Link className="w-full">
                     <FaUsers className="text-xl mx-2" /> Manage Users{" "}
