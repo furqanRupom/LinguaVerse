@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import Swal from "sweetalert2";
 import SectionTitle from "../../../../components/SectionTitle";
+import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 
 const AddClass = () => {
 
@@ -14,7 +15,7 @@ const AddClass = () => {
   const secret_image_hoisting_token = import.meta.env.VITE_image_secret_key
   const image_hoisting_url =  `https://api.imgbb.com/1/upload?key=${secret_image_hoisting_token}
   `
-
+  const [axiosSecure] = useAxiosSecure()
   const onSubmit = (data) => {
     // Handle form submission
     const formData = new FormData()
@@ -39,7 +40,7 @@ const AddClass = () => {
           price:parseFloat(price)
         }
 
-        axios.post('http://localhost:5000/classes',newClass)
+        axiosSecure.post('/classes',newClass)
         .then(res=>{
           if(res.data.insertedId){
             Swal.fire({

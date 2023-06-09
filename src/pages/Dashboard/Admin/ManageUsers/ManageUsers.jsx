@@ -3,10 +3,12 @@ import { useAllClasses } from "../../../../hooks/useAllClasses";
 import axios from "axios";
 import SectionTitle from "../../../../components/SectionTitle";
 import Swal from "sweetalert2";
+import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
+  const [axiosSecure] = useAxiosSecure()
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await axios.get("http://localhost:5000/users");
+    const res = await axiosSecure.get("/users");
     console.log(res.data);
     return res.data;
   });

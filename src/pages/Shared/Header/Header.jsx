@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { useNavbar } from "../../../hooks/useNavbar";
 import logo from "../../../assets/lv.png";
 import { useAuth } from "../../../hooks/useAuth";
+import { useAdmin } from "../../../hooks/useAdmin";
+import { useInstructor } from "../../../hooks/useInstructor";
 
 const Header = () => {
   const [navbar] = useNavbar();
-
-  // TODO : We will next to add is user is admin or instructor or not
-  const isAdmin = true;
-  const isInstructor = false;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   const { logOut, user } = useAuth();
 
   const handleLogOut = () => {
