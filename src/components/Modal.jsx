@@ -18,11 +18,13 @@ const Modal = ({classId}) => {
   const modalRef = useRef(null);
 
   const onSubmit = (data) => {
-    const {className,availableSeats,price} = data
+    const {className,classImage,availableSeats,price} = data
     const classInfo = {
       className,
+      image:classImage,
       seats:parseFloat(availableSeats),
-      price:parseFloat(price)
+      price:parseFloat(price),
+
     }
       axios.put(`http://localhost:5000/classes/${classId}`,classInfo)
       .then(res=>{
@@ -74,6 +76,20 @@ const Modal = ({classId}) => {
             />
             {errors.className && (
               <span className="error">Class Name is required</span>
+            )}
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Class Image</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Class Image"
+              {...register("classImage", { required: true })}
+              className="input input-bordered w-full max-w-lg"
+            />
+            {errors.className && (
+              <span className="error">Class Image is required</span>
             )}
           </div>
           <div className="form-control">

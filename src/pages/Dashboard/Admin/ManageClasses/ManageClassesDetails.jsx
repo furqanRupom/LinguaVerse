@@ -2,6 +2,7 @@ import axios from "axios";
 import { useAllClasses } from "../../../../hooks/useAllClasses";
 import { useState } from "react";
 import FeedbackModal from "../../../../components/FeedbackModal";
+import Swal from "sweetalert2";
 
 const ManageClassesDetails = ({ classInfo }) => {
   const {
@@ -22,7 +23,18 @@ const ManageClassesDetails = ({ classInfo }) => {
   const handleApprove = (id) => {
     // Handle approve button click
     axios.patch(`http://localhost:5000/AllClasses/${id}`).then((res) => {
-      if (res.data.modifiedCount > 1) refetch();
+      if (res.data.modifiedCount > 0){
+        refetch();
+        Swal.fire({
+          title: 'approved!',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+      };
     });
   };
 

@@ -20,10 +20,10 @@ const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
   const onSubmit = (data) => {
     console.log(data);
-    createUser(data.email, data.password)
+    createUser(data?.email, data?.password)
       .then((result) => {
         const loggedUser = result.user
-        updateUserProfile(data.name, data.image)
+        updateUserProfile(data?.name, data?.image)
           .then((result) => {
             const usersData = {
               name:loggedUser.displayName,
@@ -83,6 +83,7 @@ const Register = () => {
                   placeholder="Your Name"
                   {...register("name", { required: true })}
                   className="input input-bordered w-full max-w-xs"
+                  autoComplete="name"
                 />
                 {errors.name && (
                   <span className="text-red-500">Name is required</span>
@@ -97,6 +98,7 @@ const Register = () => {
                   placeholder="Your Email"
                   {...register("email", { required: true })}
                   className="input input-bordered w-full max-w-xs"
+                  autoComplete="email"
                 />
                 {errors.email && (
                   <span className="text-red-500">Email is required</span>
@@ -113,6 +115,7 @@ const Register = () => {
                 placeholder="Img url"
                 {...register("image", { required: true })}
                 className="input input-bordered w-full "
+                autoComplete="image"
               />
               {errors.image && (
                 <span className="text-red-500">Image is required</span>
@@ -129,6 +132,7 @@ const Register = () => {
                   placeholder="password"
                   {...register("password", { required: true, minLength: 6 })}
                   className="input input-bordered w-full "
+                  autoComplete="current-password"
                 />
                 {errors.password && (
                   <span className="text-red-500">
@@ -151,6 +155,7 @@ const Register = () => {
                   placeholder="Confirm password"
                   {...register("confirm", { required: true })}
                   className="input input-bordered w-full "
+                  autoComplete="new-password"
                 />
                 {errors.confirm && (
                   <span className="text-red-500">

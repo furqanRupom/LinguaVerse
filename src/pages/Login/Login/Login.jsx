@@ -1,5 +1,5 @@
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../hooks/useAuth";
 import SocialLogin from "../../../components/SocialLogin";
@@ -12,6 +12,8 @@ import '../login.css'
 
 const Login = () => {
   const [show, setShow] = useState(false);
+  const location = useLocation();
+  const navigate =  useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,10 +22,11 @@ const Login = () => {
   const { loginUser } = useAuth();
   const onSubmit = (data) => {
     console.log(data.email)
+    const from = location?.state?.from.pathname || '/'
     loginUser(data.email,data.password)
       .then((result) => {
         const loggedUser = result.user
-      
+
         Swal.fire({
           title: 'User Login successfully',
           showClass: {
@@ -33,7 +36,7 @@ const Login = () => {
             popup: 'animate__animated animate__fadeOutUp'
           }
         })
-
+        navigate(from,{replace:true})
 
       })
       .catch((error) => {
@@ -66,6 +69,7 @@ const Login = () => {
                 type="email"
                 placeholder="Your Email"
                 {...register("email", { required: true })}
+                autoComplete="email"
                 className="input input-bordered w-full "
               />
 
@@ -83,6 +87,7 @@ const Login = () => {
                   type={show ? "text" : "password"}
                   placeholder="password"
                   {...register("password", { required: true })}
+                  autoComplete="current-password"
                   className="input input-bordered w-full "
                 />
                 {errors.password && (

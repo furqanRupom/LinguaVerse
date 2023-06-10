@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
 import "./Sidebar.css";
@@ -116,7 +116,7 @@ const Sidebar = () => {
                   className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-800   hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
                 >
                   <NavLink
-                    to="/manageClasses"
+                    to="/dashboard/manageClasses"
                     className={({ isActive }) =>
                       isActive
                         ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
@@ -133,7 +133,7 @@ const Sidebar = () => {
                   className="flex w-full items-center px-4 py-2 mt-5 text-white   hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
                 >
                   <NavLink
-                    to="/manageUsers"
+                    to="/dashboard/manageUsers"
                     className={({ isActive }) =>
                       isActive
                         ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
@@ -157,7 +157,7 @@ const Sidebar = () => {
                         ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
                         : " "
                     }
-                    to="/instructorHome"
+                    to="/dashboard/instructorHome"
                   >
                     <FaHome className="text-xl mx-2" />
                     Instructor Home
@@ -174,7 +174,7 @@ const Sidebar = () => {
                         ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
                         : " "
                     }
-                    to="/addClasses"
+                    to="/dashboard/addClasses"
                   >
                     <AiFillFolderAdd className="text-xl mx-2" />
                     Add a class
@@ -221,7 +221,8 @@ const Sidebar = () => {
                   whileTap={{ scale: 0.9 }}
                   className="flex w-full items-center px-4 py-2 mt-5 text-white   hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
                 >
-                  <NavLink to="/dashboard/selectedClasses"
+                  <NavLink
+                    to="/dashboard/selectedClasses"
                     className={({ isActive }) =>
                       isActive
                         ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
@@ -237,7 +238,8 @@ const Sidebar = () => {
                   whileTap={{ scale: 0.9 }}
                   className="flex w-full items-center px-3 py-1 mt-5 text-white   hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
                 >
-                  <NavLink to="/dashboard/enrolledClasses"
+                  <NavLink
+                    to="/dashboard/enrolledClasses"
                     className={({ isActive }) =>
                       isActive
                         ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
@@ -255,14 +257,16 @@ const Sidebar = () => {
         <div>
           <hr />
 
-          <NavLink
-            to="/"
-            className="flex w-full items-center px-4 py-2 mt-5 text-white   hover:text-white transition-colors duration-300 transform"
-          >
-            <FaHome className="w-5 h-5" />
+          <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <Link
+              to="/"
+              className="flex w-full items-center px-4 py-2 mt-5 text-white   hover:text-white transition-colors duration-300 transform"
+            >
+              <FaHome className="w-5 h-5" />
 
-            <span className="mx-4 font-medium">Home</span>
-          </NavLink>
+              <span className="mx-4 font-medium">Home</span>
+            </Link>
+          </motion.button>
 
           <button className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-800   hover:text-white transition-colors duration-300 transform">
             <FaSignOutAlt className="w-5 h-5 text-white" />
