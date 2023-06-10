@@ -8,6 +8,7 @@ import { useInstructor } from "../../../hooks/useInstructor";
 const Header = () => {
   const [navbar] = useNavbar();
   const [isAdmin] = useAdmin();
+  
   const [isInstructor] = useInstructor();
   const { logOut, user } = useAuth();
 

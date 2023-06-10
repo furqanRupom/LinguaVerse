@@ -82,7 +82,7 @@ const ManageClassesDetails = ({ classInfo }) => {
       </div>
       <div className="mt-4">
         <p>Available Seats: {seats}</p>
-        <p>Price: {price}</p>
+        <p>Price: ${price}</p>
         <p>Status: {status}</p>
       </div>
       <div className="mt-4">

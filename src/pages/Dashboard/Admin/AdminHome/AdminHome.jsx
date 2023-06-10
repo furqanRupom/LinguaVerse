@@ -96,7 +96,7 @@ return (
     </div>
   </div>
 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    <div className="bg-green-400 p-4 rounded shadow">
+    <div className="bg-green-200 p-4 rounded shadow">
       <motion.div
         variants={chartVariants}
         initial="hidden"
@@ -114,7 +114,7 @@ return (
         </ResponsiveContainer>
       </motion.div>
     </div>
-    <div className="bg-teal-400 p-4 rounded shadow">
+    <div className="bg-teal-200 p-4 rounded shadow">
       <motion.div
         variants={chartVariants}
         initial="hidden"
@@ -132,7 +132,7 @@ return (
         </ResponsiveContainer>
       </motion.div>
     </div>
-    <div className="bg-blue-400 p-4 rounded shadow">
+    <div className="bg-blue-200 p-4 rounded shadow">
       <motion.div
         variants={chartVariants}
         initial="hidden"

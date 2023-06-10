@@ -61,7 +61,7 @@ const FeedbackModal = () => {
           method="dialog"
           className="modal-box w-[40%]"
         >
-          <SectionTitle title="update class information" />
+          <SectionTitle title="write feedback" />
           <div className="form-control w-full max-w-full">
             <label className="label">
               <span className="label-text">Feedback</span>
