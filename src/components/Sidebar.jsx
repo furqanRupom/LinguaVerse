@@ -28,8 +28,15 @@ const Sidebar = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
 
-  const { user } = useAuth();
+  const { user,logOut } = useAuth();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const handleLogOut =()=>{
+    logOut().then(result=>{
+      console.log('object')
+    }).catch(error=>{
+      console.log(error.message)
+    })
+  }
   const handleToggle = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -96,7 +103,7 @@ const Sidebar = () => {
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-800   hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
+                  className="flex w-full items-center px-4 py-2 mt-5 text-white    hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
                 >
                   <NavLink
                     className={({ isActive }) =>
@@ -113,7 +120,7 @@ const Sidebar = () => {
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-800   hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
+                  className="flex w-full items-center px-4 py-2 mt-5 text-white    hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
                 >
                   <NavLink
                     to="/dashboard/manageClasses"
@@ -268,7 +275,7 @@ const Sidebar = () => {
             </Link>
           </motion.button>
 
-          <button className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-800   hover:text-white transition-colors duration-300 transform">
+          <button onClick={handleLogOut} className="flex w-full items-center px-4 py-2 mt-5 text-white hover:bg-gray-800   hover:text-white transition-colors duration-300 transform">
             <FaSignOutAlt className="w-5 h-5 text-white" />
 
             <span className="mx-4 font-medium">Logout</span>

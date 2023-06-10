@@ -3,6 +3,7 @@ import Loader from "../../../Loader/Loader";
 import HeroCarousel from "../HeroCarousel/HeroCarousel";
 import BenefitsCarousel from "../BenefitsCarousel/BenefitsCarousel";
 import ScrollToTop from "../../../components/ScroollToTop";
+import PopularInstructor from "../PopularInstructor/PopularInstructor";
 
 const  Home = () => {
 
@@ -14,6 +15,7 @@ const  Home = () => {
             </Helmet>
             <HeroCarousel />
             <BenefitsCarousel />
+            <PopularInstructor />
 
         </div>
     );

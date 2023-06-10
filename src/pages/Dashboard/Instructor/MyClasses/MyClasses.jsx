@@ -34,7 +34,7 @@ const MyClasses = () => {
             refetch()
             Swal.fire(
               'Deleted!',
-              'Your file has been deleted.',
+              'Your class has been deleted.',
               'success'
             )
           }

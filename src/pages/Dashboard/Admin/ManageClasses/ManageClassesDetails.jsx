@@ -41,7 +41,18 @@ const ManageClassesDetails = ({ classInfo }) => {
   const handleDeny = (id) => {
     // Handle deny button click
     axios.patch(`http://localhost:5000/AllClasses/denied/${id}`).then((res) => {
-      if (res.data.modifiedCount > 1) refetch();
+      if (res.data.modifiedCount > 0) {
+        refetch();
+        Swal.fire({
+          title: 'denied!',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
+      };
     });
   };
 

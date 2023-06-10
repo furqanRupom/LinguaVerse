@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import SectionTitle from "../../components/SectionTitle";
 import ScrollToTop from "../../components/ScroollToTop";
+import { Helmet } from "react-helmet";
 
 const Instructor = () => {
   const { data: instructors = [] } = useQuery(["instructors"], async () => {
@@ -10,7 +11,9 @@ const Instructor = () => {
   });
   return (
     <div className="my-32">
-
+         <Helmet>
+        <title>LinguaVerse | Instructors</title>
+      </Helmet>
         <SectionTitle title="Discover Our Teaching Team" className="py-6" />
       <div className="min-h-screen text-black z-20  grid grid-cols-1  md:grid-cols-2 gap-10">
         {instructors.map((instructor) => (

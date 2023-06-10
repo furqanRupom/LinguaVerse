@@ -3,6 +3,7 @@
 import React from 'react';
 import { BarChart, Bar, PieChart, Pie, LineChart, Line, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 import { motion } from 'framer-motion';
+import SectionTitle from '../../../../components/SectionTitle';
 
 const AdminDashboard = () => {
 // Dummy data for charts
@@ -51,8 +52,8 @@ visible: { opacity: 1 },
 };
 
 return (
-<div className="">
-
+<div >
+  <SectionTitle title="Admin's Home" />
 
   <div className="mt-8 mb-12">
     <h2 className="text-xl font-bold mb-4"></h2>

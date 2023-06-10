@@ -4,8 +4,12 @@ import { useAdmin } from "../../hooks/useAdmin";
 import { useInstructor } from "../../hooks/useInstructor";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
+import { useAuth } from "../../hooks/useAuth";
+import SectionTitle from "../../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
 const Classes = () => {
   const [isAdmin] = useAdmin();
+  const {user} = useAuth()
   const [isInstructor] = useInstructor();
   const { data: approvedClasses = [] } = useQuery(["approved"], async () => {
     const res = await axios.get("http://localhost:5000/classes/approved");
@@ -17,6 +21,7 @@ const Classes = () => {
     const {className,_id,instructorName,price,image}= approved;
     const selectClass = {
         selectClassId:_id,
+        studentEmail:user?.email,
         className,
         instructorName,
         price,
@@ -39,7 +44,11 @@ const Classes = () => {
   }
   return (
     <div className="my-32 max-w-7xl mx-auto">
-      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <Helmet>
+        <title>LinguaVerse | Classes</title>
+      </Helmet>
+        <SectionTitle title="Explore our classes and courses " className="py-5" />
+      <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16">
         {approvedClasses.map((approved) => (
           <div
             key={approved?._id}
