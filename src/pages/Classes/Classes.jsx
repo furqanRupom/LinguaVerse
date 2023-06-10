@@ -2,7 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useAdmin } from "../../hooks/useAdmin";
 import { useInstructor } from "../../hooks/useInstructor";
-
+import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 const Classes = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
@@ -11,15 +12,38 @@ const Classes = () => {
     return res.data;
   });
 
+
+  const handleSelectButton = approved =>{
+    const {className,_id,instructorName,price,image}= approved;
+    const selectClass = {
+        selectClassId:_id,
+        className,
+        instructorName,
+        price,
+        image
+    }
+    axios.post('http://localhost:5000/selectedClasses',selectClass)
+    .then(res=>{
+        if(res.data.insertedId){
+            Swal.fire({
+                title: 'New Classes selected successfully',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+        }
+    })
+  }
   return (
     <div className="my-32 max-w-7xl mx-auto">
       <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {approvedClasses.map((approved) => (
           <div
             key={approved?._id}
-            className={`bg-white rounded-lg shadow-md ${
-              approved.seats === 0 ? "bg-red-400" : ""
-            }`}
+            className={approved.seats === 0 ? "bg-red-400 rounded-lg shadow-md " :"bg-white rounded-lg shadow-md "}
           >
             <figure className="relative">
               <img
@@ -37,14 +61,14 @@ const Classes = () => {
               <p className="text-gray-600 mb-2">Available seats: {approved.seats}</p>
               <p className="text-gray-600 mb-4">Price: ${approved.price}</p>
               <div className="flex justify-end">
-                <button
+                <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => handleSelectButton(approved)}
                   className={`${
-                    approved.seats === 0 || isAdmin || isInstructor ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500"
+                    approved.seats === 0 || isAdmin || isInstructor ? "bg-gray-400 cursor-not-allowed" : "bg-teal-500"
                   } text-white py-2 px-4 rounded-full`}
                   disabled={approved.seats === 0 ? true : isAdmin || isInstructor}
                 >
                   select
-                </button>
+                </motion.button>
               </div>
             </div>
           </div>
