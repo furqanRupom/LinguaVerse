@@ -4,12 +4,13 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import Loader from "../Loader/Loader";
 import { useAdmin } from "../hooks/useAdmin";
+import { useInstructor } from "../hooks/useInstructor";
 
 const InstructorPrivateRoute = ({ children }) => {
   const location = useLocation();
   const { user, loading } = useAuth();
-  const [isInstructor, sInstructorLoading] = useAdmin();
-  if (loading || sInstructorLoading) {
+  const [isInstructor, isInstructorLoading] = useInstructor();
+  if (loading || isInstructorLoading) {
     return <Loader />;
   }
   if (user && isInstructor) {

@@ -110,7 +110,7 @@ const Login = () => {
             </div>
             <div className="flex items-center justify-center">
               <input
-                className="px-12 py-3 text-lg font-semibold my-5 rounded-lg text-white bg-[#0eb582] cursor-pointer hover:bg-[#448c43]"
+                className="px-12 py-3 text-lg font-semibold my-5 rounded-lg text-white bg-[#0eb582] cursor-pointer hover:bg-teal-500"
                 type="submit"
                 value="Login Now"
               />

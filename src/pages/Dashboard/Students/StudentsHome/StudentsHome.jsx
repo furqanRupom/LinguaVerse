@@ -2,7 +2,7 @@ const  StudentsHome = () => {
 
     return (
         <div>
-          
+
         </div>
     );
 };

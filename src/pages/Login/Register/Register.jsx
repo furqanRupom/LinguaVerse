@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {} from "react-icons/ai";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const Register = () => {
   const [show, setShow] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  // const [disabled, setDisabled] = useState(true);
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -43,11 +43,11 @@ const Register = () => {
               }
             })
 
-            // TODO : for now we just save the role of the database is intructor after we do our major part than we will reset
-            // TODO : we will add sweet alert as well as navigate to home page
+           
             axios.post('http://localhost:5000/users',usersData)
             .then(res=>{
               console.log(res.data)
+              navigate('/')
             })
           })
           .catch((error) => console.log(error.message));

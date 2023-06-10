@@ -12,7 +12,7 @@ export const useStudent = () =>{
         enabled:!loading,
         queryFn:async()=>{
             const res = await axiosSecure.get(`/users/student/${user?.email}`)
-            return res.data.instructor;
+            return res.data.student;
         }
     })
     return [isStudent,isStudentLoading]

@@ -8,7 +8,7 @@ import { useInstructor } from "../../../hooks/useInstructor";
 const Header = () => {
   const [navbar] = useNavbar();
   const [isAdmin] = useAdmin();
-  
+
   const [isInstructor] = useInstructor();
   const { logOut, user } = useAuth();
 
@@ -72,11 +72,11 @@ const Header = () => {
             )}
 
             <li>
-              <Link to="/myRooms">Instructors</Link>
+              <Link to="/instructors">Instructors</Link>
             </li>
 
             <li>
-              <Link to="/allRooms">Classes</Link>
+              <Link to="/approvedClasses">Classes</Link>
             </li>
 
             {!user ? (
@@ -101,9 +101,7 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li tabIndex={0}>
-            {/*
-            TODO: Conditionally rendering with if user admin or not user admin than it will goes for admin dashboard if it's not thant it will go user dashboard
-            */}
+
 
             {user ? (
               <Link
@@ -123,11 +121,11 @@ const Header = () => {
           </li>
 
           <li>
-            <Link to="/myRooms">Instructors</Link>
+            <Link to="/instructors">Instructors</Link>
           </li>
 
           <li>
-            <Link to="/allRooms">Classes</Link>
+            <Link to="/approvedClasses">Classes</Link>
           </li>
 
           {!user ? (

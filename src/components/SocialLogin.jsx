@@ -7,9 +7,10 @@ import axios from "axios";
 const SocialLogin = () => {
   const { googleSignIn } = useAuth();
   const location = useLocation();
-  //   const from = location?.state?.from?.pathname || "/";
-  //   const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || "/";
+    const navigate = useNavigate();
   const handleGoogleSignIn = () => {
+
     googleSignIn()
       .then((result) => {
         const loggedUser = result.user;
@@ -26,6 +27,7 @@ const SocialLogin = () => {
       })
       .then((data) => {
         console.log(data);
+        navigate(from,{replace:true})
       });
   };
   return (
