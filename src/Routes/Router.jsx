@@ -19,6 +19,7 @@ import AdminPrivateRoute from "../Private/AdminPrivateRoute";
 import StudentPrivateRoute from "../Private/StudentPrivateRoute";
 import Instructor from "../pages/Instructor/Instructor";
 import Classes from "../pages/Classes/Classes";
+import Payments from "../pages/Dashboard/Students/Payments/Payments";
 
 export const router = createBrowserRouter([
   {
@@ -116,6 +117,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/enrolledClasses",
         element:<StudentPrivateRoute><EnrolledClasses /></StudentPrivateRoute>,
       },
+      {
+        path:"/dashboard/payments/:id",
+        element:<StudentPrivateRoute><Payments /></StudentPrivateRoute>
+      }
     ],
   },
 ]);

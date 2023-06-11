@@ -18,7 +18,7 @@ const Instructor = () => {
       <div className="min-h-screen text-black z-20  grid grid-cols-1  md:grid-cols-2 gap-10">
         {instructors.map((instructor) => (
           <div key={instructor?._id}>
-            <div className="card card-side bg-base-100 shadow-xl p-6">
+            <div className="card card-side bg-base-100 shadow-md p-6">
               <figure>
                 <img
                   src={instructor?.image}

@@ -7,52 +7,73 @@ import { motion } from "framer-motion";
 import { useAuth } from "../../hooks/useAuth";
 import SectionTitle from "../../components/SectionTitle";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 const Classes = () => {
   const [isAdmin] = useAdmin();
-  const {user} = useAuth()
+  const { user } = useAuth();
   const [isInstructor] = useInstructor();
+  const navigate = useNavigate();
   const { data: approvedClasses = [] } = useQuery(["approved"], async () => {
     const res = await axios.get("http://localhost:5000/classes/approved");
     return res.data;
   });
 
-
-  const handleSelectButton = approved =>{
-    const {className,_id,instructorName,price,image}= approved;
-    const selectClass = {
-        selectClassId:_id,
-        studentEmail:user?.email,
-        className,
-        instructorName,
-        price,
-        image
-    }
-    axios.post('http://localhost:5000/selectedClasses',selectClass)
-    .then(res=>{
-        if(res.data.insertedId){
-            Swal.fire({
-                title: 'New Classes selected successfully',
-                showClass: {
-                  popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                  popup: 'animate__animated animate__fadeOutUp'
-                }
-              })
+  const handleSelectButton = (approved) => {
+    if (!user) {
+     return  Swal.fire({
+        title: "You have to login first",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#0eb582",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
         }
-    })
-  }
+      });
+    }
+
+    const { className, _id, instructorName, price, image } = approved;
+    const selectClass = {
+      selectClassId: _id,
+      studentEmail: user?.email,
+      className,
+      instructorName,
+      price,
+      image,
+    };
+    axios
+      .post("http://localhost:5000/selectedClasses", selectClass)
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "New Classes selected successfully",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+        }
+      });
+  };
   return (
     <div className="my-32 max-w-7xl mx-auto">
       <Helmet>
         <title>LinguaVerse | Classes</title>
       </Helmet>
-        <SectionTitle title="Explore our classes and courses " className="py-5" />
+      <SectionTitle title="Explore our classes and courses " className="py-5" />
       <div className="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16">
         {approvedClasses.map((approved) => (
           <div
             key={approved?._id}
-            className={approved.seats === 0 ? "bg-red-400 rounded-lg shadow-md " :"bg-white rounded-lg shadow-md "}
+            className={
+              approved.seats === 0
+                ? "bg-red-400 rounded-lg shadow-md "
+                : "bg-white rounded-lg shadow-md "
+            }
           >
             <figure className="relative">
               <img
@@ -65,16 +86,29 @@ const Classes = () => {
               </div>
             </figure>
             <div className="p-4">
-              <h2 className="text-lg font-semibold mb-2">{approved.className} Language</h2>
-              <p className="text-gray-600 mb-2">Instructor: {approved.instructorName}</p>
-              <p className="text-gray-600 mb-2">Available seats: {approved.seats}</p>
+              <h2 className="text-lg font-semibold mb-2">
+                {approved.className} Language
+              </h2>
+              <p className="text-gray-600 mb-2">
+                Instructor: {approved.instructorName}
+              </p>
+              <p className="text-gray-600 mb-2">
+                Available seats: {approved.seats}
+              </p>
               <p className="text-gray-600 mb-4">Price: ${approved.price}</p>
               <div className="flex justify-end">
-                <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => handleSelectButton(approved)}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => handleSelectButton(approved)}
                   className={`${
-                    approved.seats === 0 || isAdmin || isInstructor ? "bg-gray-400 cursor-not-allowed" : "bg-teal-500"
+                    approved.seats === 0 || isAdmin || isInstructor
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-teal-500"
                   } text-white py-2 px-4 rounded-full`}
-                  disabled={approved.seats === 0 ? true : isAdmin || isInstructor}
+                  disabled={
+                    approved.seats === 0 ? true : isAdmin || isInstructor
+                  }
                 >
                   select
                 </motion.button>

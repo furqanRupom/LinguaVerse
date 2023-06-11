@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import axios from "axios";
 import SectionTitle from "../../../../components/SectionTitle";
+import { Link } from "react-router-dom";
 
 const  SelectedClasses = () => {
     const {user,loading} = useAuth()
@@ -57,8 +58,7 @@ const  SelectedClasses = () => {
             <SectionTitle title="selected classes" />
             <div className="col-span-12 mt-5">
                 <div className="flex items-center justify-center my-3">
-                    <motion.button     whileHover={{ scale: 1.1 }}
-                                     whileTap={{ scale: 0.9 }} className="px-5 py-2 rounded-lg bg-teal-500 font-bold text-white">Pay</motion.button>
+
                 </div>
         <div className="grid gap-2 grid-cols-1 lg:grid-cols-1">
           <div className="bg-white p-4 shadow-lg rounded-lg">
@@ -96,6 +96,11 @@ const  SelectedClasses = () => {
                             <th className="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                               <div className="flex cursor-pointer">
                                 <span className="mr-2">ACTION</span>
+                              </div>
+                            </th>
+                            <th className="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                              <div className="flex cursor-pointer">
+                                <span className="mr-2">Pay</span>
                               </div>
                             </th>
                           </tr>
@@ -145,7 +150,17 @@ const  SelectedClasses = () => {
                                     <p>Delete</p>
                                   </motion.button>
 
+
                                 </div>
+                              </td>
+
+                              <td>
+
+                              <Link to={`/dashboard/payments/${selectClass?.selectClassId}`}>
+                              <motion.button     whileHover={{ scale: 1.1 }}
+                                     whileTap={{ scale: 0.9 }} className="px-5 py-2 rounded-lg bg-teal-500 font-bold text-white">Pay</motion.button>
+                              </Link>
+
                               </td>
 
                             </tr>
