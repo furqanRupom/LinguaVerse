@@ -14,13 +14,15 @@ const Classes = () => {
   const [isInstructor] = useInstructor();
   const navigate = useNavigate();
   const { data: approvedClasses = [] } = useQuery(["approved"], async () => {
-    const res = await axios.get("http://localhost:5000/classes/approved");
+    const res = await axios.get(
+      "https://lingua-verse-server-furqanrupom.vercel.app/classes/approved"
+    );
     return res.data;
   });
 
   const handleSelectButton = (approved) => {
     if (!user) {
-     return  Swal.fire({
+      return Swal.fire({
         title: "You have to login first",
         icon: "warning",
         showCancelButton: true,
@@ -44,7 +46,10 @@ const Classes = () => {
       image,
     };
     axios
-      .post("http://localhost:5000/selectedClasses", selectClass)
+      .post(
+        "https://lingua-verse-server-furqanrupom.vercel.app/selectedClasses",
+        selectClass
+      )
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

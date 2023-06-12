@@ -22,12 +22,13 @@ import Classes from "../pages/Classes/Classes";
 import Payments from "../pages/Dashboard/Students/Payments/Payments";
 import PaymentsHistory from "../pages/Dashboard/Students/PaymentsHistory/PaymentsHistory";
 import Errorpage from "../pages/ErrorPage/Errorpage";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement:<Errorpage />,
+    errorElement: <Errorpage />,
     children: [
       {
         path: "/",
@@ -42,13 +43,13 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path:"instructors",
-        element:<Instructor />
+        path: "instructors",
+        element: <Instructor />,
       },
       {
-        path:"approvedClasses",
-        element:<Classes />
-      }
+        path: "approvedClasses",
+        element: <Classes />,
+      },
     ],
   },
   {
@@ -60,24 +61,20 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
+        path:"/dashboard/home",
+        element:<DashboardHome />
+      },
+      {
         path: "/dashboard/studentsHome",
-        element:<StudentPrivateRoute> <StudentsHome /></StudentPrivateRoute> ,
+        element: <StudentsHome />,
       },
       {
         path: "/dashboard/instructorHome",
-        element: (
-          <InstructorPrivateRoute>
-            <InstructorHome />
-          </InstructorPrivateRoute>
-        ),
+        element: <InstructorHome />,
       },
       {
         path: "/dashboard/adminHome",
-        element: (
-          <AdminPrivateRoute>
-            <AdminHome />
-          </AdminPrivateRoute>
-        ),
+        element: <AdminHome />,
       },
       {
         path: "/dashboard/manageClasses",
@@ -114,20 +111,36 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/selectedClasses",
-        element: <StudentPrivateRoute><SelectedClasses /></StudentPrivateRoute>,
+        element: (
+          <StudentPrivateRoute>
+            <SelectedClasses />
+          </StudentPrivateRoute>
+        ),
       },
       {
         path: "/dashboard/enrolledClasses",
-        element:<StudentPrivateRoute><EnrolledClasses /></StudentPrivateRoute>,
+        element: (
+          <StudentPrivateRoute>
+            <EnrolledClasses />
+          </StudentPrivateRoute>
+        ),
       },
       {
-        path:"/dashboard/payments/:id",
-        element:<StudentPrivateRoute><Payments /></StudentPrivateRoute>
+        path: "/dashboard/payments/:id",
+        element: (
+          <StudentPrivateRoute>
+            <Payments />
+          </StudentPrivateRoute>
+        ),
       },
       {
-        path:"/dashboard/paymentsHistory",
-        element:<StudentPrivateRoute><PaymentsHistory /></StudentPrivateRoute>
-      }
+        path: "/dashboard/paymentsHistory",
+        element: (
+          <StudentPrivateRoute>
+            <PaymentsHistory />
+          </StudentPrivateRoute>
+        ),
+      },
     ],
   },
 ]);

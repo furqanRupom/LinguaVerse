@@ -57,14 +57,14 @@ const Header = () => {
             </li>
             {user ? (
               <li tabIndex={0}>
-                <Link
-                  to={
-                    isAdmin
-                      ? "/dashboard/adminHome"
-                      : isInstructor
-                      ? "/dashboard/InstructorHome"
-                      : "/dashboard/studentsHome"
-                  }
+                <Link to="/dashboard/home"
+                  // to={
+                  //   isAdmin
+                  //     ? "/dashboard/adminHome"
+                  //     : isInstructor
+                  //     ? "/dashboard/InstructorHome"
+                  //     : "/dashboard/studentsHome"
+                  // }
                 >
                   Dashboard
                 </Link>
@@ -88,8 +88,6 @@ const Header = () => {
             ) : (
               ""
             )}
-
-
           </ul>
         </div>
         <div className="flex items-center px-4">
@@ -106,14 +104,14 @@ const Header = () => {
           </li>
           <li tabIndex={0}>
             {user ? (
-              <Link
-                to={
-                  isAdmin
-                    ? "/dashboard/adminHome"
-                    : isInstructor
-                    ? "/dashboard/InstructorHome"
-                    : "/dashboard/studentsHome"
-                }
+              <Link to="/dashboard/home"
+                // to={
+                //   isAdmin
+                //     ? "/dashboard/adminHome"
+                //     : isInstructor
+                //     ? "/dashboard/InstructorHome"
+                //     : "/dashboard/studentsHome"
+                // }
               >
                 Dashboard
               </Link>

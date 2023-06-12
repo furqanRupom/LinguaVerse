@@ -9,42 +9,45 @@ import { useClass } from "../hooks/useClass";
 import { useAllClasses } from "../hooks/useAllClasses";
 
 const FeedbackModal = () => {
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [,refetch] = useAllClasses()
+  const [, refetch] = useAllClasses();
   const modalRef = useRef(null);
 
-
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     const { feedback } = data;
-    const feedbackInfo = {feedback}
-       axios.put(`http://localhost:5000/AllClasses/feedback/${localStorage.getItem('classId')}`,feedbackInfo)
-      .then(res=>{
-        if(res.data.modifiedCount > 0){
+    const feedbackInfo = { feedback };
+    axios
+      .put(
+        `https://lingua-verse-server-furqanrupom.vercel.app/AllClasses/feedback/${localStorage.getItem(
+          "classId"
+        )}`,
+        feedbackInfo
+      )
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
           Swal.fire({
-            title: 'Feedback sent successfully',
+            title: "Feedback sent successfully",
             showClass: {
-              popup: 'animate__animated animate__fadeInDown'
+              popup: "animate__animated animate__fadeInDown",
             },
             hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-          localStorage.removeItem('classId')
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+          localStorage.removeItem("classId");
           modalRef.current.close();
           refetch();
         }
-      })
-
+      });
   };
 
   const handleCloseModal = () => {
     modalRef.current.close();
-    localStorage.removeItem('classId')
+    localStorage.removeItem("classId");
   };
 
   return (

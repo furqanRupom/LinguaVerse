@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const Register = () => {
   const [show, setShow] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -22,33 +22,36 @@ const Register = () => {
     console.log(data);
     createUser(data?.email, data?.password)
       .then((result) => {
-        const loggedUser = result.user
+        const loggedUser = result.user;
         updateUserProfile(data?.name, data?.image)
           .then((result) => {
             const usersData = {
-              name:loggedUser.displayName,
-              email:loggedUser.email,
-              image:loggedUser.photoURL,
-              role:'student'
-            }
-            console.log('updated',usersData);
+              name: loggedUser.displayName,
+              email: loggedUser.email,
+              image: loggedUser.photoURL,
+              role: "student",
+            };
+            console.log("updated", usersData);
 
             Swal.fire({
-              title: 'User Created successfully',
+              title: "User Created successfully",
               showClass: {
-                popup: 'animate__animated animate__fadeInDown'
+                popup: "animate__animated animate__fadeInDown",
               },
               hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-              }
-            })
+                popup: "animate__animated animate__fadeOutUp",
+              },
+            });
 
-           
-            axios.post('http://localhost:5000/users',usersData)
-            .then(res=>{
-              console.log(res.data)
-              navigate('/')
-            })
+            axios
+              .post(
+                "https://lingua-verse-server-furqanrupom.vercel.app/users",
+                usersData
+              )
+              .then((res) => {
+                console.log(res.data);
+                navigate("/");
+              });
           })
           .catch((error) => console.log(error.message));
       })

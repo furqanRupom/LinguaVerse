@@ -7,51 +7,43 @@ import { motion } from "framer-motion";
 import Modal from "../../../../components/Modal";
 import axios from "axios";
 import Swal from "sweetalert2";
-import './MyClasses.css'
+import "./MyClasses.css";
 const MyClasses = () => {
   const [classes, refetch] = useClass();
-  const [classId,setClassId] = useState()
-  const showModalWithItemId =(Id) => {
-     window.my_modal_5.showModal()
-      setClassId(Id)
-  }
+  const [classId, setClassId] = useState();
+  const showModalWithItemId = (Id) => {
+    window.my_modal_5.showModal();
+    setClassId(Id);
+  };
 
-  const handleDeleteClass = (id)=>{
+  const handleDeleteClass = (id) => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#0eb582',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "#0eb582",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-
-        axios.delete(`http://localhost:5000/classes/${id}`)
-        .then(res=>{
-          if(res.data.deletedCount > 0){
-            refetch()
-            Swal.fire(
-              'Deleted!',
-              'Your class has been deleted.',
-              'success'
-            )
-          }
-        })
-
+        axios
+          .delete(
+            `https://lingua-verse-server-furqanrupom.vercel.app/classes/${id}`
+          )
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your class has been deleted.", "success");
+            }
+          });
       }
-    })
-
-
-
-
-
-  }
+    });
+  };
   return (
     <div>
-        <SectionTitle title="My Classes" />
-        <Modal  classId={classId}/>
+      <SectionTitle title="My Classes" />
+      <Modal classId={classId} />
       <div className="col-span-12 mt-5">
         <div className="grid gap-2 grid-cols-1 lg:grid-cols-1">
           <div className="bg-white p-4 shadow-lg rounded-lg">
@@ -131,23 +123,23 @@ const MyClasses = () => {
 
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <p>{everyClass?.price}</p>
-
                               </td>
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <p>{everyClass?.enrol}</p>
-
                               </td>
-                             
+
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <p>{everyClass?.feedback}</p>
                               </td>
 
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <div className="flex space-x-4">
-                                  <motion.button  onClick={() => showModalWithItemId(everyClass._id)}
-                                     whileHover={{ scale: 1.1 }}
-                                     whileTap={{ scale: 0.9 }}
-
+                                  <motion.button
+                                    onClick={() =>
+                                      showModalWithItemId(everyClass._id)
+                                    }
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
                                     className="text-blue-500 hover:text-blue-600"
                                   >
                                     <svg
@@ -166,10 +158,12 @@ const MyClasses = () => {
                                     </svg>
                                     <p className="text-center">update</p>
                                   </motion.button>
-                                  <motion.button onClick={()=> handleDeleteClass(everyClass._id)}
-                                     whileHover={{ scale: 1.1 }}
-                                     whileTap={{ scale: 0.9 }}
-
+                                  <motion.button
+                                    onClick={() =>
+                                      handleDeleteClass(everyClass._id)
+                                    }
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.9 }}
                                     className="text-red-500 hover:text-red-600"
                                   >
                                     <svg
@@ -188,10 +182,8 @@ const MyClasses = () => {
                                     </svg>
                                     <p>Delete</p>
                                   </motion.button>
-
                                 </div>
                               </td>
-
                             </tr>
                           ))}
                         </tbody>
@@ -204,8 +196,6 @@ const MyClasses = () => {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 };

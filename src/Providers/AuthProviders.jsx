@@ -17,7 +17,7 @@ export const AuthContext = createContext();
 
 const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isOpen,setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
 
@@ -50,7 +50,8 @@ const AuthProviders = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        axios.post("http://localhost:5000/jwt", {
+        axios
+          .post("https://lingua-verse-server-furqanrupom.vercel.app/jwt", {
             email: currentUser.email,
           })
           .then((data) => {
@@ -60,17 +61,12 @@ const AuthProviders = ({ children }) => {
           });
       } else {
         localStorage.removeItem("access-token");
-
       }
-
-
     });
     return () => {
       return unsubscribe();
     };
   }, []);
-
-
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -78,20 +74,14 @@ const AuthProviders = ({ children }) => {
     // Enable Dark Reader in dark mode
     if (darkMode) {
       document.documentElement.classList.add("dark");
-
     } else {
       document.documentElement.classList.remove("dark");
-
     }
   }, [darkMode]);
 
   const handleModeToggle = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
   };
-
-
-
-
 
   const userInfo = {
     user,
@@ -104,7 +94,7 @@ const AuthProviders = ({ children }) => {
     isOpen,
     setIsOpen,
     handleModeToggle,
-    darkMode
+    darkMode,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

@@ -6,50 +6,54 @@ import Swal from "sweetalert2";
 import { useAxiosSecure } from "../../../../hooks/useAxiosSecure";
 
 const ManageUsers = () => {
-  const [axiosSecure] = useAxiosSecure()
+  const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
     console.log(res.data);
     return res.data;
   });
 
+  const handleMakeAdmin = (user) => {
+    axios
+      .patch(
+        `https://lingua-verse-server-furqanrupom.vercel.app/users/admin/${user?._id}`
+      )
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: `${user?.name} is now admin`,
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+        }
+      });
+  };
 
-  const handleMakeAdmin = (user)=>{
-    axios.patch(`http://localhost:5000/users/admin/${user?._id}`)
-    .then(res=>{
-      if(res.data.modifiedCount > 0){
-        refetch();
-        Swal.fire({
-          title: `${user?.name} is now admin`,
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        })
-      }
-    })
-  }
-
-  const handleMakeInstructor = (user)=>{
-    axios.patch(`http://localhost:5000/users/instructor/${user?._id}`)
-    .then(res=>{
-      if(res.data.modifiedCount > 0){
-        refetch();
-        Swal.fire({
-          title: `${user?.name} is now Instructor`,
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        })
-      }
-    })
-  }
-
+  const handleMakeInstructor = (user) => {
+    axios
+      .patch(
+        `https://lingua-verse-server-furqanrupom.vercel.app/users/instructor/${user?._id}`
+      )
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: `${user?.name} is now Instructor`,
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+        }
+      });
+  };
 
   return (
     <div>
@@ -65,7 +69,7 @@ const ManageUsers = () => {
                       <table className="min-w-full divide-y divide-gray-200">
                         <thead>
                           <tr>
-                          <th className="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                               <div className="flex cursor-pointer">
                                 <span className="mr-2">User's Image</span>
                               </div>
@@ -96,8 +100,12 @@ const ManageUsers = () => {
                         <tbody className="bg-white divide-y divide-gray-200">
                           {users.map((user, index) => (
                             <tr key={index}>
-                                <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                <img className="w-20 rounded-full object-cover" src={user.image} alt="" />
+                              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                                <img
+                                  className="w-20 rounded-full object-cover"
+                                  src={user.image}
+                                  alt=""
+                                />
                               </td>
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <p>{user.name}</p>
@@ -127,12 +135,17 @@ const ManageUsers = () => {
 
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <div className="flex space-x-4">
-                                  <button onClick={()=> handleMakeAdmin(user)}
+                                  <button
+                                    onClick={() => handleMakeAdmin(user)}
                                     disabled={
-                                      user?.role === "student" || user?.role === 'instructor' ? false : true
+                                      user?.role === "student" ||
+                                      user?.role === "instructor"
+                                        ? false
+                                        : true
                                     }
                                     className={`${
-                                      user?.role === "student" || user?.role === 'instructor'
+                                      user?.role === "student" ||
+                                      user?.role === "instructor"
                                         ? "bg-green-500 hover:bg-green-600"
                                         : "bg-gray-400 cursor-not-allowed"
                                     } text-white px-4 py-2 rounded mr-2`}
@@ -140,16 +153,16 @@ const ManageUsers = () => {
                                     Make Admin
                                   </button>
 
-                                  <button onClick={()=> handleMakeInstructor(user)}
+                                  <button
+                                    onClick={() => handleMakeInstructor(user)}
                                     disabled={
-                                        user?.role === "student" ? false : true
+                                      user?.role === "student" ? false : true
                                     }
                                     className={`${
-                                        user?.role  === "student"
+                                      user?.role === "student"
                                         ? "bg-red-500 hover:bg-red-600"
                                         : "bg-gray-400 cursor-not-allowed"
                                     } text-white px-4 py-2 rounded mr-2`}
-
                                   >
                                     Make Instructor
                                   </button>

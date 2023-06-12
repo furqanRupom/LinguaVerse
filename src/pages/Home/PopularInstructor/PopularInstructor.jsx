@@ -2,7 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
-import { FaFacebook, FaTwitter, FaInstagram, FaFacebookF } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaFacebookF,
+} from "react-icons/fa";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,7 +15,9 @@ import SectionTitle from "../../../components/SectionTitle";
 
 const PopularInstructor = () => {
   const { data: PopularInstructors = [] } = useQuery(["popular"], async () => {
-    const res = await axios.get("http://localhost:5000/popular/instructors");
+    const res = await axios.get(
+      "https://lingua-verse-server-furqanrupom.vercel.app/popular/instructors"
+    );
     return res.data;
   });
 
@@ -40,7 +47,7 @@ const PopularInstructor = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto pt-16 pb-16">
+    <div className="max-w-7xl mx-auto pt-16 pb-32">
       <SectionTitle title="Explore our teachers" />
       <div className="w-full">
         <Slider {...settings}>

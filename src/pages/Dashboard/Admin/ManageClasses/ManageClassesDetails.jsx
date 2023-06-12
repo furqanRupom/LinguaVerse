@@ -18,65 +18,67 @@ const ManageClassesDetails = ({ classInfo }) => {
   const [, refetch] = useAllClasses();
   const [classId, setClassId] = useState();
 
-
-
   const handleApprove = (id) => {
     // Handle approve button click
-    axios.patch(`http://localhost:5000/AllClasses/${id}`).then((res) => {
-      if (res.data.modifiedCount > 0){
-        refetch();
-        Swal.fire({
-          title: 'approved!',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        })
-      };
-    });
+    axios
+      .patch(
+        `https://lingua-verse-server-furqanrupom.vercel.app/AllClasses/${id}`
+      )
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: "approved!",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+        }
+      });
   };
 
   const handleDeny = (id) => {
     // Handle deny button click
-    axios.patch(`http://localhost:5000/AllClasses/denied/${id}`).then((res) => {
-      if (res.data.modifiedCount > 0) {
-        refetch();
-        Swal.fire({
-          title: 'denied!',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        })
-      };
-    });
+    axios
+      .patch(
+        `https://lingua-verse-server-furqanrupom.vercel.app/AllClasses/denied/${id}`
+      )
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: "denied!",
+            showClass: {
+              popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+        }
+      });
   };
 
-
-  const handleFeedback = (id)=>{
-    localStorage.setItem('classId',id)
+  const handleFeedback = (id) => {
+    localStorage.setItem("classId", id);
     window.my_modal_2 = {
-      showModal: function() {
-        let modal = document.getElementById('my_modal_2');
+      showModal: function () {
+        let modal = document.getElementById("my_modal_2");
         if (modal) {
           modal.showModal();
-          setClassId(id)
+          setClassId(id);
         }
-      }
+      },
     };
-    window.my_modal_2.showModal()
-
-  }
+    window.my_modal_2.showModal();
+  };
 
   return (
     <div className="bg-white shadow-lg rounded-md p-4 mb-4">
-
-
-<FeedbackModal classId={classId} hello="hello" />
+      <FeedbackModal classId={classId} hello="hello" />
       <div className="flex items-center">
         <div className="w-24 h-24 rounded-full overflow-hidden">
           <img
@@ -120,18 +122,16 @@ const ManageClassesDetails = ({ classInfo }) => {
           Deny
         </button>
         <button
-  disabled={status === "pending" || status === "approved"}
-  className={`px-4 py-2 rounded ${
-    status === "pending" || status === "approved" ? "bg-gray-500 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
-  } text-white`}
-  onClick={() => handleFeedback(_id)}
->
-  Send Feedback
-</button>
-
-
-
-
+          disabled={status === "pending" || status === "approved"}
+          className={`px-4 py-2 rounded ${
+            status === "pending" || status === "approved"
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-600"
+          } text-white`}
+          onClick={() => handleFeedback(_id)}
+        >
+          Send Feedback
+        </button>
       </div>
     </div>
   );

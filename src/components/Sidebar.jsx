@@ -74,7 +74,7 @@ const Sidebar = () => {
         <div>
           {/* Branding & Profile Info */}
           <div>
-            <div className="w-full hidden md:flex py-2 justify-center items-center mx-auto text-xl font-bold text-white">
+            <div className="w-full hidden md:flex py-2 justify-center items-center mx-auto text-lg font-bold text-white">
               <span className="text-[#0eb582] pr-2">
                 {" "}
                 {isAdmin
@@ -106,6 +106,7 @@ const Sidebar = () => {
           <div className="uppercase">
             {isAdmin ? (
               <ul className="mt-12  text-white flex flex-col space-y-3">
+                
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -119,7 +120,7 @@ const Sidebar = () => {
                     }
                     to="/dashboard/adminHome"
                   >
-                    <FaHome className="text-xl mx-2" />
+                    <FaHome className="text-lg mx-2" />
                     Admin Home
                   </NavLink>
                 </motion.li>
@@ -136,7 +137,7 @@ const Sidebar = () => {
                         : " "
                     }
                   >
-                    <FaRegBookmark className="text-xl mx-2" /> Manage Classes
+                    <FaRegBookmark className="text-lg mx-2" /> Manage Classes
                   </NavLink>
                 </motion.li>
 
@@ -153,7 +154,7 @@ const Sidebar = () => {
                         : " "
                     }
                   >
-                    <FaUsers className="text-xl mx-2" /> Manage Users{" "}
+                    <FaUsers className="text-lg mx-2" /> Manage Users{" "}
                   </NavLink>
                 </motion.li>
               </ul>
@@ -172,7 +173,7 @@ const Sidebar = () => {
                     }
                     to="/dashboard/instructorHome"
                   >
-                    <FaHome className="text-xl mx-2" />
+                    <FaHome className="text-lg mx-2" />
                     Instructor Home
                   </NavLink>
                 </motion.li>
@@ -189,7 +190,7 @@ const Sidebar = () => {
                     }
                     to="/dashboard/addClasses"
                   >
-                    <AiFillFolderAdd className="text-xl mx-2" />
+                    <AiFillFolderAdd className="text-lg mx-2" />
                     Add a class
                   </NavLink>
                 </motion.li>
@@ -206,7 +207,7 @@ const Sidebar = () => {
                         : " "
                     }
                   >
-                    <SiGoogleclassroom className="text-xl mx-2" /> My Classes
+                    <SiGoogleclassroom className="text-lg mx-2" /> My Classes
                   </NavLink>
                 </motion.li>
               </ul>
@@ -225,7 +226,7 @@ const Sidebar = () => {
                     }
                     to="/dashboard/studentsHome"
                   >
-                    <FaHome className="text-xl mx-2 mb-1" />
+                    <FaHome className="text-lg mx-2 mb-1" />
                     Student's Home
                   </NavLink>
                 </motion.li>
@@ -242,7 +243,7 @@ const Sidebar = () => {
                         : " "
                     }
                   >
-                    <AiFillCheckCircle className="text-xl mx-2" /> My Selected
+                    <AiFillCheckCircle className="text-lg mx-2" /> My Selected
                     Classes
                   </NavLink>
                 </motion.li>
@@ -259,7 +260,7 @@ const Sidebar = () => {
                         : " "
                     }
                   >
-                    <FaScroll className="text-xl mx-2" /> My Enrolled Classes
+                    <FaScroll className="text-lg mx-2" /> My Enrolled Classes
                   </NavLink>
                 </motion.li>
 
@@ -276,7 +277,7 @@ const Sidebar = () => {
                         : " "
                     }
                   >
-                    <MdPayment className="text-xl mx-2" /> Payments History
+                    <MdPayment className="text-lg mx-2" /> Payments History
                   </NavLink>
                 </motion.li>
               </ul>

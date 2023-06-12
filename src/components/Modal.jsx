@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import SectionTitle from "./SectionTitle";
@@ -8,41 +7,43 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useClass } from "../hooks/useClass";
 
-const Modal = ({classId}) => {
+const Modal = ({ classId }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [,refetch] = useClass()
+  const [, refetch] = useClass();
   const modalRef = useRef(null);
 
   const onSubmit = (data) => {
-    const {className,classImage,availableSeats,price} = data
+    const { className, classImage, availableSeats, price } = data;
     const classInfo = {
       className,
-      image:classImage,
-      seats:parseFloat(availableSeats),
-      price:parseFloat(price),
-
-    }
-      axios.put(`http://localhost:5000/classes/${classId}`,classInfo)
-      .then(res=>{
-        if(res.data.modifiedCount > 0){
-          refetch()
+      image: classImage,
+      seats: parseFloat(availableSeats),
+      price: parseFloat(price),
+    };
+    axios
+      .put(
+        `https://lingua-verse-server-furqanrupom.vercel.app/classes/${classId}`,
+        classInfo
+      )
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          refetch();
           Swal.fire({
-            title: 'Class updated successfully',
+            title: "Class updated successfully",
             showClass: {
-              popup: 'animate__animated animate__fadeInDown'
+              popup: "animate__animated animate__fadeInDown",
             },
             hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-          modalRef.current.close()
+              popup: "animate__animated animate__fadeOutUp",
+            },
+          });
+          modalRef.current.close();
         }
-      })
-
+      });
   };
 
   const handleCloseModal = () => {
@@ -119,28 +120,29 @@ const Modal = ({classId}) => {
             {errors.price && <span className="error">Price is required</span>}
           </div>
 
+          <div className="flex items-center justify-center space-x-5">
+            <div>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="px-10 py-3 bg-teal-500 text-white font-bold rounded-lg "
+              >
+                Update
+              </motion.button>
+            </div>
 
-              <div className="flex items-center justify-center space-x-5">
-
-              <div>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="px-10 py-3 bg-teal-500 text-white font-bold rounded-lg "
-          >
-            Update
-          </motion.button>
-
-              </div>
-
-          <div className="modal-action mb-6">
-            <motion.button whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }} type="button" className=" px-10 py-3 bg-red-500 text-white font-bold rounded-lg" onClick={handleCloseModal}>
-              Close
-            </motion.button>
+            <div className="modal-action mb-6">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                type="button"
+                className=" px-10 py-3 bg-red-500 text-white font-bold rounded-lg"
+                onClick={handleCloseModal}
+              >
+                Close
+              </motion.button>
+            </div>
           </div>
-
-              </div>
         </form>
       </dialog>
     </>

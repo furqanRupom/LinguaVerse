@@ -7,27 +7,30 @@ import axios from "axios";
 const SocialLogin = () => {
   const { googleSignIn } = useAuth();
   const location = useLocation();
-    const from = location?.state?.from?.pathname || "/";
-    const navigate = useNavigate();
+  const from = location?.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const handleGoogleSignIn = () => {
-
     googleSignIn()
       .then((result) => {
         const loggedUser = result.user;
         const savedUser = {
           name: loggedUser.displayName,
           email: loggedUser.email,
-          image:loggedUser.photoURL,
-          role:'student'
+          image: loggedUser.photoURL,
+          role: "student",
         };
-        axios.post('http://localhost:5000/users',savedUser)
-            .then(res=>{
-              console.log(res.data)
-            })
+        axios
+          .post(
+            "https://lingua-verse-server-furqanrupom.vercel.app/users",
+            savedUser
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
       })
       .then((data) => {
         console.log(data);
-        navigate(from,{replace:true})
+        navigate(from, { replace: true });
       });
   };
   return (

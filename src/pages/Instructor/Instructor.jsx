@@ -6,15 +6,17 @@ import { Helmet } from "react-helmet";
 
 const Instructor = () => {
   const { data: instructors = [] } = useQuery(["instructors"], async () => {
-    const res = await axios.get("http://localhost:5000/users/instructors");
+    const res = await axios.get(
+      "https://lingua-verse-server-furqanrupom.vercel.app/users/instructors"
+    );
     return res.data;
   });
   return (
     <div className="my-32">
-         <Helmet>
+      <Helmet>
         <title>LinguaVerse | Instructors</title>
       </Helmet>
-        <SectionTitle title="Discover Our Teaching Team" className="py-6" />
+      <SectionTitle title="Discover Our Teaching Team" className="py-6" />
       <div className="min-h-screen text-black z-20  grid grid-cols-1  md:grid-cols-2 gap-10">
         {instructors.map((instructor) => (
           <div key={instructor?._id}>

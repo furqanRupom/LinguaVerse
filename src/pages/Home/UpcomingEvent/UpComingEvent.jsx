@@ -50,7 +50,7 @@ const UpcomingEvent = () => {
   };
 
   return (
-    <section className="py-10 dark:bg-slate-900 max-w-5xl mx-auto ">
+    <section className="m dark:bg-slate-900 max-w-5xl mx-auto ">
          <h2 className="text-xl md:text-4xl font-semibold text-center  mb-8 dark:text-gray-400">
           Upcoming Events
         </h2>
