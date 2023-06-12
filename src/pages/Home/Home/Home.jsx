@@ -4,6 +4,7 @@ import HeroCarousel from "../HeroCarousel/HeroCarousel";
 import BenefitsCarousel from "../BenefitsCarousel/BenefitsCarousel";
 import ScrollToTop from "../../../components/ScroollToTop";
 import PopularInstructor from "../PopularInstructor/PopularInstructor";
+import PopularClasses from "../PopularClasses/PopularClasses";
 
 const  Home = () => {
 
@@ -15,6 +16,7 @@ const  Home = () => {
             </Helmet>
             <HeroCarousel />
             <BenefitsCarousel />
+            <PopularClasses />
             <PopularInstructor />
 
         </div>

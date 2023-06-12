@@ -23,7 +23,7 @@ const Instructor = () => {
                 <img
                   src={instructor?.image}
                   alt={instructor?.name}
-                  className="w-48 h-48 rounded-full"
+                  className="w-48 h-48 rounded-full object-cover"
                 />
               </figure>
               <div className="card-body">

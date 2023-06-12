@@ -80,6 +80,11 @@ const MyClasses = () => {
                             </th>
                             <th className="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                               <div className="flex cursor-pointer">
+                                <span className="mr-2">PRICE</span>
+                              </div>
+                            </th>
+                            <th className="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                              <div className="flex cursor-pointer">
                                 <span className="mr-2">Enrolled Students</span>
                               </div>
                             </th>
@@ -125,8 +130,14 @@ const MyClasses = () => {
                               </td>
 
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                <p>0</p>
+                                <p>{everyClass?.price}</p>
+
                               </td>
+                              <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                                <p>{everyClass?.enrol}</p>
+
+                              </td>
+                             
                               <td className="px-6 py-4 whitespace-no-wrap text-sm leading-5">
                                 <p>{everyClass?.feedback}</p>
                               </td>

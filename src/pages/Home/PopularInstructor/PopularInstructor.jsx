@@ -40,7 +40,7 @@ const PopularInstructor = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto my-20">
+    <div className="max-w-7xl mx-auto mt-32 mb-16">
       <SectionTitle title="Explore our teachers" />
       <div className="w-full">
         <Slider {...settings}>
