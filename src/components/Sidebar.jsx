@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GrLogout } from "react-icons/gr";
-import { FcSettings } from "react-icons/fc";
+import { FiActivity } from "react-icons/fi";
 import "./Sidebar.css";
 import {
   AiOutlineBars,
@@ -106,7 +106,23 @@ const Sidebar = () => {
           <div className="uppercase">
             {isAdmin ? (
               <ul className="mt-12  text-white flex flex-col space-y-3">
-                
+                  <motion.li
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="flex w-full items-center px-4 py-2 mt-5 text-white    hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
+                >
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
+                        : " "
+                    }
+                    to="/dashboard/home"
+                  >
+                    <FiActivity className="text-lg mx-2" />
+                    users Activity
+                  </NavLink>
+                </motion.li>
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -160,6 +176,23 @@ const Sidebar = () => {
               </ul>
             ) : isInstructor ? (
               <ul className="mt-12  text-white flex flex-col space-y-3">
+                   <motion.li
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="flex w-full items-center px-4 py-2 mt-5 text-white    hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
+                >
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
+                        : " "
+                    }
+                    to="/dashboard/home"
+                  >
+                    <FiActivity className="text-lg mx-2" />
+                    users Activity
+                  </NavLink>
+                </motion.li>
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -213,6 +246,23 @@ const Sidebar = () => {
               </ul>
             ) : (
               <ul className="mt-12  text-white flex flex-col space-y-3">
+                   <motion.li
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="flex w-full items-center px-4 py-2 mt-5 text-white    hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
+                >
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
+                        : " "
+                    }
+                    to="/dashboard/home"
+                  >
+                    <FiActivity className="text-lg mx-2" />
+                    users Activity
+                  </NavLink>
+                </motion.li>
                 <motion.li
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
