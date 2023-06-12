@@ -21,11 +21,13 @@ import Instructor from "../pages/Instructor/Instructor";
 import Classes from "../pages/Classes/Classes";
 import Payments from "../pages/Dashboard/Students/Payments/Payments";
 import PaymentsHistory from "../pages/Dashboard/Students/PaymentsHistory/PaymentsHistory";
+import Errorpage from "../pages/ErrorPage/Errorpage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement:<Errorpage />,
     children: [
       {
         path: "/",
