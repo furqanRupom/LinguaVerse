@@ -1,4 +1,4 @@
-# Foreign Language Summer Camp Website
+# LinguaVerse
 
 Welcome to the LanguaVerse! This website is designed to provide an immersive and engaging learning experience for students interested in learning foreign languages. It offers a range of features and functionalities to cater to the needs of students, instructors, and administrators.
 
