@@ -103,7 +103,7 @@ const Sidebar = () => {
             </div>
           </div>
 
-          <div className="uppercase">
+          <div className="uppercase overflow-hidden">
             {isAdmin ? (
               <ul className="mt-12  text-white flex flex-col space-y-3">
                   <motion.li

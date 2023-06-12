@@ -69,12 +69,7 @@ const DashboardHome = () => {
       <header className=" shadow-md py-4 px-6 flex items-center justify-between">
         <img src={logo} className="w-10 h-10" alt="Logo" />
         <div className="flex items-center">
-          <div className="mr-4">
-            <BsBell className="w-6 h-6 text-gray-600" />
-            <span className="bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center absolute -top-1 -right-1">
-              3
-            </span>
-          </div>
+        
           <motion.img
             src={user.photoURL}
             className="w-8 h-8 rounded-full object-cover"
