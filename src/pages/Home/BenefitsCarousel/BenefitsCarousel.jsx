@@ -9,6 +9,7 @@ import { TbAlignBoxBottomCenterFilled } from "react-icons/tb";
 import { FaAmericanSignLanguageInterpreting } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
 import "./BenefitsCarousel.css";
+import SectionTitle from "../../../components/SectionTitle";
 const BenefitsCarousel = () => {
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,6 +25,7 @@ const BenefitsCarousel = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    arrows:false,
     responsive: [
       {
         breakpoint: 1024,
@@ -44,24 +46,17 @@ const BenefitsCarousel = () => {
 
   return (
     <div className=" left-0 right-0 -mt-48    w-full max-w-[90rem] mx-auto flex items-center justify-center overflow-hidden">
-      <div className="bg-white z-20 shadow-lg rounded-lg px-5 py-12">
+      <div className="bg-white dark:bg-slate-900 dark:text-gray-400 z-20 shadow-lg rounded-lg px-5 py-12">
         <div className="text-center p-12">
-          <h3 className=" text-xl md:text-4xl font-bold">
-            Our School Facility
-          </h3>
-          <img
-            className="mx-auto"
-            src="https://demo.themexbd.com/wpv/talim/wp-content/uploads/2021/04/bar-img-1.jpg"
-            alt=""
-          />
-          <p className="pt-3  md:text-xl">
+        <SectionTitle title="Our School facilities" />
+          <p className="  md:text-xl">
             Revel in the Bountiful Benefits of Our Education Program
           </p>
         </div>
         <div className="max-w-7xl mx-auto text-2xl text-center py-12">
           <Slider {...settings} ref={(c) => (slider = c)}>
             <div className="px-4">
-              <div className="shadow-lg bg-white rounded-lg h-48 p-4">
+              <div className="shadow-lg bg-white rounded-lg dark:bg-slate-900 h-48 p-4 dark:shadow-xl">
                 <h3 className="text-[#0eb582] text-6xl  mb-4 font-bold ">
                   <MdLanguage />
                 </h3>
@@ -70,7 +65,7 @@ const BenefitsCarousel = () => {
               </div>
             </div>
             <div className="px-4">
-              <div className="shadow-lg bg-white rounded-lg h-48 p-4">
+              <div className="shadow-lg bg-white rounded-lg dark:bg-slate-900 h-48 p-4 dark:shadow-xl">
                 <h3 className="text-[#0eb582] text-6xl  mb-4 font-bold">
                   <SiConvertio />
                 </h3>
@@ -79,7 +74,7 @@ const BenefitsCarousel = () => {
               </div>
             </div>
             <div className="px-4">
-              <div className="shadow-lg bg-white rounded-lg h-48 p-4">
+              <div className="shadow-lg bg-white rounded-lg dark:bg-slate-900 h-48 p-4 dark:shadow-xl">
                 <h3 className="text-[#0eb582] text-6xl  mb-4 font-bold">
                   <MdOutlineCameraOutdoor />
                 </h3>
@@ -88,7 +83,7 @@ const BenefitsCarousel = () => {
               </div>
             </div>
             <div className="px-4">
-              <div className="shadow-lg bg-white rounded-lg h-48 p-4">
+              <div className="shadow-lg bg-white rounded-lg dark:bg-slate-900 h-48 p-4 dark:shadow-xl">
                 <h3 className="text-[#0eb582] text-6xl  mb-4 font-bold">
                   <TbAlignBoxBottomCenterFilled />
                 </h3>
@@ -97,7 +92,7 @@ const BenefitsCarousel = () => {
               </div>
             </div>
             <div className="px-4">
-              <div className="shadow-lg bg-white rounded-lg h-48 p-4">
+              <div className="shadow-lg bg-white rounded-lg dark:bg-slate-900 h-48 p-4 dark:shadow-xl">
                 <h3 className="text-[#0eb582] text-6xl  mb-4 font-bold">
                   <FaAmericanSignLanguageInterpreting />
                 </h3>
@@ -106,7 +101,7 @@ const BenefitsCarousel = () => {
               </div>
             </div>
             <div className="px-4">
-              <div className="shadow-lg bg-white rounded-lg h-48 p-4">
+              <div className="shadow-lg bg-white rounded-lg dark:bg-slate-900 h-48 p-4 dark:shadow-xl">
                 <h3 className="text-[#0eb582] text-6xl  mb-4 font-bold">
                   <SiGoogleclassroom />
                 </h3>

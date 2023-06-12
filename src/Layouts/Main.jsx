@@ -9,8 +9,11 @@ const  Main = () => {
         <div>
             <ScrollToTop />
             <Header />
+            <div >
             <Outlet />
-            <div className="mt-72">
+            </div>
+
+            <div>
             <Footer />
             </div>
 

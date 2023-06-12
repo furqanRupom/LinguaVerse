@@ -9,7 +9,7 @@ import PopularClasses from "../PopularClasses/PopularClasses";
 const  Home = () => {
 
     return (
-        <div>
+        <div className="dark:bg-slate-900">
             <ScrollToTop />
             <Helmet>
                 <title>LinguaVerse | Home</title>

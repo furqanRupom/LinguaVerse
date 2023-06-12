@@ -34,9 +34,9 @@ const HeroCarousel = () => {
                 className="h-full bg-[100%] bg-cover flex items-center justify-start relative"
                 style={{ backgroundImage: `url(${image})` }}
               >
-                <div className="absolute  inset-0 bg-gradient-to-tr from-slate-950 via-slate-900/75 "></div>
+                <div className="absolute  inset-0 bg-gradient-to-tr from-slate-950 via-slate-900/75  dark:bg-opacity-50 dark:bg-slate-900 "></div>
                 <div className=" md:w-3/4 text-left pl-12 z-20">
-                  <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-6xl text-white font-bold">
+                  <h1 className="text-lg sm:text-2xl md:text-4xl lg:text-6xl text-white dark:text-gray-300 font-bold">
                     Linguistic Superpowers Unleashed
                   </h1>
                   <h1 className="pt-3">
@@ -54,10 +54,10 @@ const HeroCarousel = () => {
                   </p>
 
                   <div className="mt-7">
-                    <button className="p-2 sm:px-5 sm:py-2 md:px-7  md:py-4 sm:text-xl font-semibold text-white bg-[#0eb582] duration-500 hover:text-[#0eb582] hover:bg-white">
+                    <button className="p-2 sm:px-5 sm:py-2 md:px-7  md:py-4 sm:text-xl font-semibold text-white dark:text-slate-800 bg-[#0eb582] duration-500 hover:text-[#0eb582] hover:bg-white dark:hover:bg-slate-800 dark:hover:text-[#0eb582]">
                       Start Trial
                     </button>
-                    <button className=" p-2 sm:px-5 sm:py-2 md:px-7 md:py-4  md:ml-5 sm:text-xl ml-3 font-semibold bg-white text-[#0eb582]  hover:text-white hover:bg-[#0eb582] duration-500">
+                    <button className=" p-2 sm:px-5 sm:py-2 md:px-7 md:py-4  md:ml-5 sm:text-xl ml-3 font-semibold bg-white dark:bg-slate-800 text-[#0eb582]  hover:text-white hover:bg-[#0eb582] dark:hover:text-slate-800 dark:hover:bg-[#0eb582] duration-500 ">
                       View Classes
                     </button>
                   </div>

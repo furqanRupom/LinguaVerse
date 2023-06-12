@@ -19,14 +19,14 @@ const PopularClasses = () => {
       {popularClasses.map((popularClass) => (
         <div
           key={popularClass?.id}
-          className="card card-compact bg-base-100 shadow-md rounded-md overflow-hidden"
+          className="card card-compact bg-base-100 dark:bg-slate-900  dark:shadow-slate-950 shadow-md rounded-md overflow-hidden"
         >
           <figure>
             <img src={popularClass?.image} alt="Class" className="w-full" />
           </figure>
           <div className="card-body p-4 flex flex-col justify-between">
             <div>
-              <p className="text-lg font-semibold mb-2">{popularClass?.className}</p>
+              <p className="text-lg font-semibold mb-2 dark:text-gray-400">{popularClass?.className}</p>
               <div className="flex items-center mb-2">
                 <AiOutlineClockCircle className="mr-2" />
                 <p className="text-gray-600">3 hours 20 minutes</p>

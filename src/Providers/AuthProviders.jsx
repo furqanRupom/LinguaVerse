@@ -70,6 +70,29 @@ const AuthProviders = ({ children }) => {
     };
   }, []);
 
+
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Enable Dark Reader in dark mode
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+
+    } else {
+      document.documentElement.classList.remove("dark");
+
+    }
+  }, [darkMode]);
+
+  const handleModeToggle = () => {
+    setDarkMode((prevDarkMode) => !prevDarkMode);
+  };
+
+
+
+
+
   const userInfo = {
     user,
     createUser,
@@ -79,7 +102,9 @@ const AuthProviders = ({ children }) => {
     updateUserProfile,
     googleSignIn,
     isOpen,
-    setIsOpen
+    setIsOpen,
+    handleModeToggle,
+    darkMode
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

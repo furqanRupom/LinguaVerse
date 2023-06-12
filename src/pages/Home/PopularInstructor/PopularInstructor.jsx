@@ -36,18 +36,18 @@ const PopularInstructor = () => {
     ],
     autoplay: true,
     autoplaySpeed: 10000,
-    arrows: false,
+    arrows: true,
   };
 
   return (
-    <div className="max-w-7xl mx-auto mt-32 mb-16">
+    <div className="max-w-7xl mx-auto pt-16 pb-16">
       <SectionTitle title="Explore our teachers" />
       <div className="w-full">
         <Slider {...settings}>
           {PopularInstructors.map((instructors) => (
             <div
               key={instructors?._id}
-              className="bg-white rounded-lg shadow-md p-4"
+              className="bg-white dark:text-gray-400 dark:bg-slate-900 rounded-lg shadow-md p-4"
             >
               <figure className="relative">
                 <img
@@ -55,7 +55,7 @@ const PopularInstructor = () => {
                   alt="Movie"
                   className="object-cover w-full h-96 rounded-t-lg"
                 />
-                <div className="absolute top-2 right-2 text-[#c5f6e2] bg-[#0eb582] text-xs px-2 py-1 rounded">
+                <div className="absolute top-2 right-2 text-[#c5f6e2] bg-[#0eb582] text-xs px-2 py-1 rounded dark:bg-slate-800 dark:text-[#0eb582]">
                   popular
                 </div>
               </figure>
@@ -67,15 +67,15 @@ const PopularInstructor = () => {
                 <div className="flex justify-center items-center mt-4">
                   <FaFacebookF
                     size={34}
-                    className="text-[#0eb582] cursor-pointer mx-1 bg-[#c5f6e2] hover:bg-[#0eb582] hover:text-white duration-500 p-1 rounded-md"
+                    className="text-[#0eb582] cursor-pointer mx-1 bg-[#c5f6e2] hover:bg-[#0eb582] hover:text-white duration-500 p-1 rounded-md dark:bg-slate-800 dark:hover:hover:bg-[#0eb582] dark:hover:text-slate-800"
                   />
                   <FaTwitter
                     size={34}
-                    className="text-[#0eb582] cursor-pointer bg-[#c5f6e2] hover:bg-[#0eb582] hover:text-white duration-500 mx-1 p-1 rounded-md"
+                    className="text-[#0eb582] cursor-pointer bg-[#c5f6e2] hover:bg-[#0eb582] hover:text-white duration-500 mx-1 p-1 rounded-md dark:bg-slate-800 dark:hover:hover:bg-[#0eb582] dark:hover:text-slate-800"
                   />
                   <FaInstagram
                     size={34}
-                    className="text-[#0eb582] cursor-pointer bg-[#c5f6e2] hover:bg-[#0eb582] hover:text-white duration-500 mx-1 p-1 rounded-md"
+                    className="text-[#0eb582] cursor-pointer bg-[#c5f6e2] hover:bg-[#0eb582] hover:text-white duration-500 mx-1 p-1 rounded-md dark:bg-slate-800 dark:hover:hover:bg-[#0eb582] dark:hover:text-slate-800"
                   />
                 </div>
               </div>

@@ -4,13 +4,15 @@ import logo from "../../../assets/lv.png";
 import { useAuth } from "../../../hooks/useAuth";
 import { useAdmin } from "../../../hooks/useAdmin";
 import { useInstructor } from "../../../hooks/useInstructor";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { FiSun } from "react-icons/fi";
 
 const Header = () => {
   const [navbar] = useNavbar();
   const [isAdmin] = useAdmin();
 
   const [isInstructor] = useInstructor();
-  const { logOut, user } = useAuth();
+  const { logOut, user, handleModeToggle, darkMode } = useAuth();
 
   const handleLogOut = () => {
     logOut()
@@ -24,12 +26,12 @@ const Header = () => {
     <header
       className={
         !navbar
-          ? "navbar justify-between bg-white fixed top-0   mx-auto w-full z-50"
-          : "navbar justify-around bg-white  fixed top-0   mx-auto w-full z-50"
+          ? "navbar justify-between bg-white fixed top-0   mx-auto w-full z-50 dark:bg-slate-800 dark:text-gray-400"
+          : "navbar justify-around bg-white  fixed top-0   mx-auto w-full z-50 dark:bg-slate-800 dark:text-gray-400"
       }
     >
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown d">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +50,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white    text-xl rounded-box w-52 "
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white    text-xl rounded-box w-52 dark:bg-slate-800"
           >
             <li>
               <Link to="/">Home</Link>
@@ -86,6 +88,8 @@ const Header = () => {
             ) : (
               ""
             )}
+
+
           </ul>
         </div>
         <div className="flex items-center px-4">
@@ -97,12 +101,10 @@ const Header = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-xl ">
-          <li>
+          <li className="">
             <Link to="/">Home</Link>
           </li>
           <li tabIndex={0}>
-
-
             {user ? (
               <Link
                 to={
@@ -120,16 +122,16 @@ const Header = () => {
             )}
           </li>
 
-          <li>
+          <li className="">
             <Link to="/instructors">Instructors</Link>
           </li>
 
-          <li>
+          <li className="">
             <Link to="/approvedClasses">Classes</Link>
           </li>
 
           {!user ? (
-            <li>
+            <li className="">
               <Link to="/login">Login</Link>
             </li>
           ) : (
@@ -141,17 +143,24 @@ const Header = () => {
       {user ? (
         <>
           <div className="navbar-end">
+            <button
+              className="btn btn-ghost ml-2 text-2xl"
+              onClick={handleModeToggle}
+              aria-label="Toggle Dark Mode"
+            >
+              {darkMode ? <FaMoon /> : <FiSun />}
+            </button>
             <div className="dropdown dropdown-end ">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                 <img src={user?.photoURL} alt="" />
+                  <img src={user?.photoURL} alt="" />
                 </div>
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow text-xl bg-white  rounded-box w-52 "
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow text-xl bg-white  rounded-box w-52 dark:bg-slate-800"
               >
-                <li>
+                <li className="">
                   <h3 className="justify-between">Profile</h3>
                 </li>
                 <li>
@@ -186,7 +195,15 @@ const Header = () => {
           </button>
         </>
       ) : (
-        ""
+        <div className="navbar-end">
+          <button
+            className="btn btn-ghost ml-2 text-2xl"
+            onClick={handleModeToggle}
+            aria-label="Toggle Dark Mode"
+          >
+            {darkMode ? <FaMoon /> : <FiSun />}
+          </button>
+        </div>
       )}
     </header>
   );
