@@ -20,6 +20,7 @@ import StudentPrivateRoute from "../Private/StudentPrivateRoute";
 import Instructor from "../pages/Instructor/Instructor";
 import Classes from "../pages/Classes/Classes";
 import Payments from "../pages/Dashboard/Students/Payments/Payments";
+import PaymentsHistory from "../pages/Dashboard/Students/PaymentsHistory/PaymentsHistory";
 
 export const router = createBrowserRouter([
   {
@@ -120,6 +121,10 @@ export const router = createBrowserRouter([
       {
         path:"/dashboard/payments/:id",
         element:<StudentPrivateRoute><Payments /></StudentPrivateRoute>
+      },
+      {
+        path:"/dashboard/paymentsHistory",
+        element:<StudentPrivateRoute><PaymentsHistory /></StudentPrivateRoute>
       }
     ],
   },

@@ -9,6 +9,12 @@ import {
   AiFillCheckCircle,
   AiFillFolderAdd,
 } from "react-icons/ai";
+
+import {
+  MdPayment
+}
+
+from 'react-icons/md'
 import { useAuth } from "../hooks/useAuth";
 import {
   FaHome,
@@ -254,6 +260,23 @@ const Sidebar = () => {
                     }
                   >
                     <FaScroll className="text-xl mx-2" /> My Enrolled Classes
+                  </NavLink>
+                </motion.li>
+
+                <motion.li
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="flex w-full items-center px-3 py-1 mt-5 text-white   hover:text-white cursor-pointer transition-colors text-sm duration-300 transform "
+                >
+                  <NavLink
+                    to="/dashboard/paymentsHistory"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-white text-[#0eb582] py-3 font-semibold w-full border-0 rounded"
+                        : " "
+                    }
+                  >
+                    <MdPayment className="text-xl mx-2" /> Payments History
                   </NavLink>
                 </motion.li>
               </ul>
