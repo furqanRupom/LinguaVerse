@@ -5,6 +5,7 @@ import BenefitsCarousel from "../BenefitsCarousel/BenefitsCarousel";
 import ScrollToTop from "../../../components/ScroollToTop";
 import PopularInstructor from "../PopularInstructor/PopularInstructor";
 import PopularClasses from "../PopularClasses/PopularClasses";
+import UpcomingEvent from "../UpcomingEvent/UpComingEvent";
 
 const  Home = () => {
 
@@ -18,7 +19,7 @@ const  Home = () => {
             <BenefitsCarousel />
             <PopularClasses />
             <PopularInstructor />
-
+            <UpcomingEvent />
         </div>
     );
 };

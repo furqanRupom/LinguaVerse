@@ -53,7 +53,7 @@ const PopularInstructor = () => {
                 <img
                   src={instructors?.image}
                   alt="Movie"
-                  className="object-cover w-full h-96 rounded-t-lg"
+                  className="object-cover w-full h-[500px] md:h-96 rounded-t-lg"
                 />
                 <div className="absolute top-2 right-2 text-[#c5f6e2] bg-[#0eb582] text-xs px-2 py-1 rounded dark:bg-slate-800 dark:text-[#0eb582]">
                   popular
